@@ -17,6 +17,10 @@ dependencies {
     implementation libs.guava
 }
 
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
