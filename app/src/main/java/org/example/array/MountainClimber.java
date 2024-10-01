@@ -2,8 +2,13 @@ package org.example.array;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MountainClimber {
+
+    private static final Logger logger = Logger.getLogger(MountainClimber.class.getName());
+
     private static int calculateEnergy(int[] terrain, int start, int end) {
         int energy = 0;
         for (int i = start; i < end; i++) {
@@ -73,7 +78,7 @@ public class MountainClimber {
     public static void main(String[] args) {
         int[] terrain = {0, 1, 2, 4, 3, 1, 0, 0, 1, 2, 3, 1, 2, 1, 0};
         int safePeakCount = countSafePeaks(terrain);
-        System.out.println(safePeakCount);
+        logger.log(Level.INFO,"Safe peaks: {0}", safePeakCount);
     }
 
 }
