@@ -9,6 +9,11 @@ practice algorithm
    2. 找到谷底
    3. 遍历山峰，start， peak， end
    4. 体力符合的山峰计数
+### MoveZeros
+1. 双指针
+   1. 一个指针遍历，一个指针记录非零元素
+   2. 遍历结束，非零元素后的元素置零
+   3. 交换非零元素和零元素
 
 ### MountainPeaksCounter
 1. 边界条件
