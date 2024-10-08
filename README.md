@@ -24,3 +24,9 @@ practice algorithm
 ### SmallestSubsequence
 1. 双循环，找到最小的字符
 2. 外部变量记录字符出现次数
+
+## search
+### BinarySearch
+1. 迭代
+   1. while 循环 找中值
+2. 递归
