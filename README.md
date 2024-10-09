@@ -36,6 +36,13 @@ practice algorithm
 2. 前缀和
 3. 哈希表记录每个前缀和第一次出现的位置
 4. 遍历前缀和，找到最长的偶数长度的子串
+### LengthOfLongestSubstring
+1. 滑动窗口
+   1. 两个指针，l， r
+   2. r指针遍历字符串，l指针记录满足条件的子串
+   3. 满足条件的子串，l指针右移
+   4. 不满足条件的子串，r指针右移
+   5. freq记录字符出现次数
 
 ### SmallestSubsequence
 1. 双循环，找到最小的字符
