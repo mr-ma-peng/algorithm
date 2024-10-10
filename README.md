@@ -30,7 +30,11 @@ practice algorithm
 1. 边界条件
 2. O（n） 遍历获取左增右减的山峰
 
-## string
+### IntersectionOfTwoArrays
+1. 两个集合
+    1. 遍历一个集合，另一个集合查找
+
+## String
 ### LongestEvenO
 1. s + s
 2. 前缀和
