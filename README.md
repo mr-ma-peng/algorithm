@@ -32,7 +32,8 @@ practice algorithm
 
 ### IntersectionOfTwoArrays
 1. 两个集合
-    1. 遍历一个集合，另一个集合查找
+   1. 遍历一个集合，另一个集合查找
+2. map 记录次数
 
 ## String
 ### LongestEvenO
