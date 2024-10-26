@@ -58,3 +58,15 @@ practice algorithm
 1. 迭代
    1. while 循环 找中值
 2. 递归
+
+## LinkedList
+### ReverseLinkedList
+1. 节点类
+   1. 存储数据和对下一个节点的引用
+2. 链表类
+   1. append
+      1. 在链表末尾添加一个新节点
+   2. printList
+      1. 打印链表中的所有元素
+   3. reverse
+      1. 反转链表
