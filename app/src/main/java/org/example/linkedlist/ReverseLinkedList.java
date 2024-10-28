@@ -50,6 +50,38 @@ public class ReverseLinkedList<T> {
             }
             head = prev;
         }
+
+        public void reverse(int m, int n) {
+            if (m >= n || head == null) {
+                return;
+            }
+
+            Node<T> dummy = new Node<>(null);
+            dummy.next = head;
+            Node<T> preM = dummy;
+
+            for (int i = 1; i < m; i++) {
+                preM = preM.next;
+            }
+
+            Node<T> start = preM.next;
+            Node<T> prev = null;
+            Node<T> current = start;
+
+            for (int i = m; i <= n; i++) {
+                Node<T> next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+
+            preM.next = prev;
+            start.next = current;
+
+            if (m == 1) {
+                head = prev;
+            }
+        }
     }
 
     public static void main(String[] args) {
