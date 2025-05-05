@@ -5,7 +5,7 @@ import spock.lang.Unroll
 
 class SolutionTest extends Specification {
 
-    private Solution solution = new Solution();
+    private Solution solution = new Solution()
 
     @Unroll
     def "Test removeDuplicates"() {
