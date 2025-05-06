@@ -51,4 +51,25 @@ class SolutionTest extends Specification {
             [2, 2, 2, 2]           | 2   | 0         | []
     }
 
+    @Unroll
+    def "Test moveZeroes"() {
+        given:
+            int[] originalNums = Arrays.copyOf(nums as int[], nums.size())
+
+        when:
+            solution.moveZeroes(originalNums)
+
+        then:
+            Arrays.equals(originalNums, expectedArray as int[])
+
+        where:
+            nums                   | expectedArray
+            []                     | []
+            [0]                    | [0]
+            [1, 0, 2]              | [1, 2, 0]
+            [0, 0, 1]              | [1, 0, 0]
+            [1, 2, 3]              | [1, 2, 3]
+            [4, 0, 5, 0, 6, 0]     | [4, 5, 6, 0, 0, 0]
+            [0, 1, 0, 3, 12]       | [1, 3, 12, 0, 0]
+    }
 }

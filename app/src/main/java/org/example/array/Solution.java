@@ -32,4 +32,11 @@ public class Solution {
         }
         return slow;
     }
+
+    void moveZeroes(int[] nums) {
+        int k = removeElement(nums, 0);
+        for (int i = k; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+    }
 }
