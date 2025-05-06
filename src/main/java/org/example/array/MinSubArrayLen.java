@@ -1,15 +1,10 @@
 package org.example.array;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class MinSubArrayLen {
-
-    private static final Logger LOGGER = Logger.getLogger(MinSubArrayLen.class.getName());
 
     // time complexity: O(n)
     // space complexity: O(1)
-    public static int minSubArrayLen(int target, int[] nums) {
+    public int minSubArrayLen(int target, int[] nums) {
         int l = 0;
         int r = -1;
         int sum = 0;
@@ -33,11 +28,5 @@ public class MinSubArrayLen {
         }
 
         return minLen;
-    }
-
-    public static void main(String[] args) {
-        int[] nums = new int[] {2, 3, 1, 2, 4, 3};
-        int target = 7;
-        LOGGER.log(Level.INFO, "Minimum subarray length: {0}", minSubArrayLen(target, nums));
     }
 }
