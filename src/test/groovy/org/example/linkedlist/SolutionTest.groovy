@@ -4,11 +4,7 @@ import spock.lang.Specification
 
 class SolutionTest extends Specification {
 
-    private Solution solution
-
-    def setup() {
-        solution = new Solution()
-    }
+    private Solution solution = new Solution()
 
     def "test deleteDuplicates removes duplicates correctly"() {
         given: "A linked list with duplicates: 1 -> 1 -> 1 -> null"
