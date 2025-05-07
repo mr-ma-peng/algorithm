@@ -68,4 +68,22 @@ class SolutionTest extends Specification {
             [4, 0, 5, 0, 6, 0]     | [4, 5, 6, 0, 0, 0]
             [0, 1, 0, 3, 12]       | [1, 3, 12, 0, 0]
     }
+
+    def "Test twoSum"() {
+        when:
+            int[] result = solution.twoSum(numbers as int[], target)
+
+        then:
+            Arrays.equals(result, expectedIndices as int[])
+
+        where:
+            numbers           | target | expectedIndices
+            [2, 7, 11, 15]    | 9      | [1, 2]
+            [1, 2, 4]         | 6      | [2, 3]
+            [0, 0]            | 0      | [1, 2]
+            [-1, 5, 8]        | 4      | [1, 2]
+            [1, 3, 5, 7]      | 10     | [2, 4]
+            [1, 2, 3]         | 7      | [-1, -1]
+    }
+
 }
