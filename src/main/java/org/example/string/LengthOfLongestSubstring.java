@@ -1,13 +1,10 @@
 package org.example.string;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LengthOfLongestSubstring {
-
-    private static final Logger LOGGER = Logger.getLogger(LengthOfLongestSubstring.class.getName());
-
-    public static int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstringUsingArray(String s) {
         int[] frequency = new int[256];
         int left = 0;
         int right = -1;
@@ -27,9 +24,25 @@ public class LengthOfLongestSubstring {
         return result;
     }
 
-    public static void main(String[] args) {
-        String s = "abcabcbb";
-        int result = lengthOfLongestSubstring(s);
-        LOGGER.log(Level.INFO, "Length of longest substring: {0}", result);
+    public int lengthOfLongestSubstringUsingMap(String s){
+        Map<Character, Integer> windows = new HashMap<>();
+
+        int left = 0;
+        int right = 0;
+        int len = 0;
+
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            right++;
+            windows.put(c, windows.getOrDefault(c, 0) + 1);
+
+            while (windows.get(c) > 1) {
+                char b = s.charAt(left);
+                left++;
+                windows.put(b, windows.get(b) - 1);
+            }
+            len = Math.max(len, right - left);
+        }
+        return len;
     }
 }
