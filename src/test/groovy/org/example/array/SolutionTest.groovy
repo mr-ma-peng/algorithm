@@ -1,13 +1,11 @@
 package org.example.array
 
 import spock.lang.Specification
-import spock.lang.Unroll
 
 class SolutionTest extends Specification {
 
     private Solution solution = new Solution()
 
-    @Unroll
     def "Test removeDuplicates"() {
         given:
             int[] originalNums = Arrays.copyOf(nums as int[], nums.size())
@@ -29,7 +27,6 @@ class SolutionTest extends Specification {
             [0, 0, 1, 1, 1, 2, 2, 3, 3, 4] | 5         | [0, 1, 2, 3, 4]
     }
 
-    @Unroll
     def "Test removeElement"() {
         given:
             int[] originalNums = Arrays.copyOf(nums as int[], nums.size())
@@ -51,7 +48,6 @@ class SolutionTest extends Specification {
             [2, 2, 2, 2]           | 2   | 0         | []
     }
 
-    @Unroll
     def "Test moveZeroes"() {
         given:
             int[] originalNums = Arrays.copyOf(nums as int[], nums.size())

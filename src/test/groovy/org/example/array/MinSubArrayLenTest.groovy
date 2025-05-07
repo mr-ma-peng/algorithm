@@ -1,12 +1,10 @@
 package org.example.array
 
 import spock.lang.Specification
-import spock.lang.Unroll
 
 class MinSubArrayLenTest extends Specification {
     private MinSubArrayLen minSubArrayLen = new MinSubArrayLen()
 
-    @Unroll
     def "Test minSubArrayLen"() {
         expect:
             minSubArrayLen.minSubArrayLen(target, nums as int[]) == expected
