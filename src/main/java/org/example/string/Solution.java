@@ -1,6 +1,8 @@
 package org.example.string;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Solution {
@@ -77,5 +79,42 @@ public class Solution {
             }
         }
         return false;
+    }
+
+    public List<Integer> findAnagrams(String s, String t) {
+        Map<Character, Integer> need = new HashMap<>();
+        Map<Character, Integer> windows = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+        for (char c : t.toCharArray()) {
+            need.put(c, need.getOrDefault(c, 0) + 1);
+        }
+        int left = 0;
+        int right = 0;
+        int valid = 0;
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            right++;
+            if (need.containsKey(c)) {
+                windows.put(c, windows.getOrDefault(c, 0) + 1);
+                if (need.get(c).equals(windows.get(c))) {
+                    valid++;
+                }
+            }
+
+            while ((right - left) >= t.length()) {
+                if (valid == need.size()) {
+                    result.add(left);
+                }
+                char d = s.charAt(left);
+                left++;
+                if (need.containsKey(d)) {
+                    if (need.get(d).equals(windows.get(d))) {
+                        valid--;
+                    }
+                    windows.put(d, windows.get(d) - 1);
+                }
+            }
+        }
+        return result;
     }
 }

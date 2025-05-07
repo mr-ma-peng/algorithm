@@ -37,4 +37,20 @@ class SolutionTest extends Specification {
             ""                  | "a"        | false
             "adcada"            | "abc"      | false
     }
+
+    def "Test findAnagrams"() {
+        expect:
+            solution.findAnagrams(s, t) == expected
+
+        where:
+            s              | t      | expected
+            "cbaebabacd"   | "abc"  | [0, 6]
+            "abab"         | "ab"   | [0, 1, 2]
+            "abcdefg"      | "xyz"  | []
+            "aaaaa"        | "aaa"  | [0, 1, 2]
+            "abacbabc"     | "abc"  | [1, 2, 3, 5]
+            ""             | "a"    | []
+            "aa"           | "a"    | [0, 1]
+    }
+
 }
