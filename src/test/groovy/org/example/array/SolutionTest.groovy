@@ -88,7 +88,7 @@ class SolutionTest extends Specification {
 
     def "Test twoSumTarget"() {
         when:
-            List<List<Integer>> result = solution.twoSumTarget(nums as int[], target)
+            List<List<Integer>> result = solution.twoSumTarget(nums as int[], target, null, null)
         then:
             result.containsAll(expectedResult)
         where:
@@ -103,4 +103,20 @@ class SolutionTest extends Specification {
             [1, -1]           | 0      | [[-1, 1]]
     }
 
+    def "Test threeSumTarget"() {
+        when:
+            List<List<Integer>> result = solution.threeSumTarget(nums as int[], target)
+        then:
+            result.containsAll(expectedResult)
+        where:
+            nums                   | target | expectedResult
+            [1, 0, -1, 2, -2]      | 0      | [[-2, 0, 2], [-1, 0, 1]] // 示例期望结果
+            [2, 7, 11, 15]         | 20     | [[2, 7, 11]] // 2 + 7 + 11 = 20
+            [1, 2, 3]              | 6      | [[1, 2, 3]] // 1 + 2 + 3 = 6
+            [1, 3, 5, 7]           | 15     | [[3, 5, 7]] // 3 + 5 + 7 = 15
+            [1, 2, 3]              | 7      | [] // 无法找到符合条件的组合
+            [0, 0, 0]              | 0      | [[0, 0, 0]] // 所有元素都是 0
+            []                     | 5      | [] // 空数组无法找到结果
+            [1, -1, 0]             | 0      | [[-1, 0, 1]] // 测试负数和正数组合
+    }
 }

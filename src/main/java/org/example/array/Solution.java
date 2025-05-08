@@ -3,6 +3,7 @@ package org.example.array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Solution {
     public int removeDuplicates(int[] nums) {
@@ -63,11 +64,11 @@ public class Solution {
         return new int[]{-1, -1};
     }
 
-    public List<List<Integer>> twoSumTarget(int[] nums, int target) {
+    public List<List<Integer>> twoSumTarget(int[] nums, Integer target, Integer start, Integer end) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
-        int leftIndex = 0;
-        int rightIndex = nums.length - 1;
+        int leftIndex = Objects.isNull(start) ? 0 : start;
+        int rightIndex = Objects.isNull(end) ? nums.length - 1 : end;
         while (leftIndex < rightIndex) {
             int sum = nums[leftIndex] + nums[rightIndex];
             int left = nums[leftIndex];
@@ -82,6 +83,24 @@ public class Solution {
                 while (leftIndex < rightIndex && nums[rightIndex] == right) rightIndex--;
             }
         }
+        return result;
+    }
+
+
+    public List<List<Integer>> threeSumTarget(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            List<List<Integer>> tuples = twoSumTarget(nums, target - nums[i], i + 1, nums.length - 1);
+            for (List<Integer> item : tuples) {
+                List<Integer> newList = new ArrayList<>(item);
+                newList.add(nums[i]);
+                newList.sort(Integer::compareTo);
+                result.add(newList);
+            }
+            while (i < nums.length - 1 && nums[i] == nums[i + 1]) i++;
+        }
+
         return result;
     }
 }
