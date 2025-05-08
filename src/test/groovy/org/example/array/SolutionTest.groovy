@@ -86,4 +86,21 @@ class SolutionTest extends Specification {
             [1, 2, 3]         | 7      | [-1, -1]
     }
 
+    def "Test twoSumTarget"() {
+        when:
+            List<List<Integer>> result = solution.twoSumTarget(nums as int[], target)
+        then:
+            result.containsAll(expectedResult)
+        where:
+            nums              | target | expectedResult
+            [1, 0, -1, 2, -2] | 0      | [[-2, 2], [-1, 1]]
+            [2, 7, 11, 15]    | 9      | [[2, 7]]
+            [1, 2, 3]         | 4      | [[1, 3]]
+            [1, 3, 5, 7]      | 8      | [[1, 7], [3, 5]]
+            [1, 2, 3]         | 7      | []
+            [0, 0, 0]         | 0      | [[0, 0]]
+            []                | 5      | []
+            [1, -1]           | 0      | [[-1, 1]]
+    }
+
 }
