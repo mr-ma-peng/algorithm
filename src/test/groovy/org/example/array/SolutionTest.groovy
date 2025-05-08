@@ -119,4 +119,20 @@ class SolutionTest extends Specification {
             []                     | 5      | [] // 空数组无法找到结果
             [1, -1, 0]             | 0      | [[-1, 0, 1]] // 测试负数和正数组合
     }
+
+    def "Test nSumTarget"() {
+        when:
+            List<List<Integer>> result = solution.nSumTarget(nums as int[], n, 0, target)
+        then:
+            result.containsAll(expectedResult)
+        where:
+            nums                   | n   | target | expectedResult
+            [1, 0, -1, 2, -2]      | 4   | 0      | [[-2, -1, 1, 2]] // -2 + (-1) + 1 + 2 == 0
+            [2, 7, 11, 15]         | 3   | 24     | [[2, 7, 15]] // 2 + 7 + 15 == 24
+            [1, 2, 3, 4]           | 2   | 5      | [[1, 4], [2, 3]] // 1+4=5, 2+3=5
+            [1, 2, 3, 4]           | 4   | 10     | [[1, 2, 3, 4]] // 1+2+3+4 == 10
+            [1, 2, 3]              | 3   | 6      | [[1, 2, 3]] // 1+2+3 == 6
+            []                     | 2   | 5      | [] // 空数组无法找到结果
+            [0, 0, 0, 0]           | 4   | 0      | [[0, 0, 0, 0]] // 所有元素都是0
+    }
 }

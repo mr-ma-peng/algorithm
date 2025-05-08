@@ -103,4 +103,40 @@ public class Solution {
 
         return result;
     }
+
+    public List<List<Integer>> nSumTarget(int[] nums, int n, int start, long target) {
+        List<List<Integer>> res = new ArrayList<>();
+        int len = nums.length;
+        if (n < 2 || len < n) return res;
+
+        if (n == 2) {
+            int left = start, right = len - 1;
+            while (left < right) {
+                int sum = nums[left] + nums[right];
+                int lr = nums[left];
+                int rr = nums[right];
+                if (sum < target) {
+                    while (left < right && nums[left] == lr) left++;
+                } else if (sum > target) {
+                    while (left < right && nums[right] == rr) right--;
+                } else {
+                    res.add(List.of(nums[left], nums[right]));
+                    while (left < right && nums[left] == lr) left++;
+                    while (left < right && nums[right] == rr) right--;
+                }
+            }
+        } else {
+            for (int i = start; i < nums.length; i++) {
+                List<List<Integer>> nTuples = nSumTarget(nums, n - 1, i + 1, target - nums[i]);
+                for (List<Integer> item : nTuples) {
+                    List<Integer> newList = new ArrayList<>(item);
+                    newList.add(nums[i]);
+                    newList.sort(Integer::compareTo);
+                    res.add(newList);
+                }
+                while (i < nums.length - 1 && nums[i] == nums[i + 1]) i++;
+            }
+        }
+        return res;
+    }
 }
