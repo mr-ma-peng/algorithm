@@ -1,6 +1,7 @@
 package org.example.string;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,5 +117,30 @@ public class Solution {
             }
         }
         return result;
+    }
+
+    public String reverseWords(String s) {
+        List<String> result = new ArrayList<>();
+        StringBuilder sb = reverseSingleWord(new StringBuilder(s.trim()));
+        List<StringBuilder> builderList = Arrays.stream(sb.toString().split("\\s+"))
+                .map(StringBuilder::new)
+                .toList();
+        for (StringBuilder item : builderList) {
+            result.add(reverseSingleWord(item).toString());
+        }
+        return String.join(" ", result);
+    }
+
+    private StringBuilder reverseSingleWord(StringBuilder sb) {
+        int left = 0;
+        int right = sb.length() - 1;
+        while (left < right) {
+            char temp = sb.charAt(left);
+            sb.setCharAt(left, sb.charAt(right));
+            sb.setCharAt(right, temp);
+            left++;
+            right--;
+        }
+        return sb;
     }
 }

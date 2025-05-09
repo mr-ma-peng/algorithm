@@ -53,4 +53,17 @@ class SolutionTest extends Specification {
             "aa"           | "a"    | [0, 1]
     }
 
+    def "Test reverseWords"() {
+        expect:
+            solution.reverseWords(s) == expected
+
+        where:
+            s                          | expected
+            "the sky is blue"         | "blue is sky the"
+            "  hello world  "         | "world hello"
+            "a"                       | "a"
+            ""                        | ""
+            "   a   b c  "            | "c b a"
+    }
+
 }
