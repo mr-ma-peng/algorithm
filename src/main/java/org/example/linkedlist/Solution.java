@@ -6,13 +6,13 @@ public class Solution {
         ListNode<Integer> slow = head;
         ListNode<Integer> fast = head;
         while (fast != null) {
-            if (!fast.getVal().equals(slow.getVal())) {
-                slow.setNext(fast);
+            if (!fast.val.equals(slow.val)) {
+                slow.next = fast;
                 slow = slow.getNext();
             }
             fast = fast.getNext();
         }
-        slow.setNext(null);
+        slow.next = null;
         return head;
     }
 }
