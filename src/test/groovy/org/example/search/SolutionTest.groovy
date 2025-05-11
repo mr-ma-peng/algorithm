@@ -2,9 +2,9 @@ package org.example.search
 
 import spock.lang.Specification
 
-class BinarySearchTest extends Specification {
+class SolutionTest extends Specification {
 
-    private BinarySearch binarySearch = new BinarySearch()
+    private Solution binarySearch = new Solution()
 
     def "Test BinarySearch"() {
         expect:

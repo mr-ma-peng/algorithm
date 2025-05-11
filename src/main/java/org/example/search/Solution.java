@@ -1,7 +1,7 @@
 package org.example.search;
 
 
-public class BinarySearch {
+public class Solution {
 
     public int binarySearch(int[] array, int target) {
         int left = 0;
