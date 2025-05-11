@@ -4,11 +4,11 @@ import spock.lang.Specification
 
 class SolutionTest extends Specification {
 
-    private Solution binarySearch = new Solution()
+    private Solution solution = new Solution()
 
     def "Test BinarySearch"() {
         expect:
-            binarySearch.binarySearch(array as int[], target) == expected
+            solution.binarySearch(array as int[], target) == expected
 
         where:
             array                               | target | expected
