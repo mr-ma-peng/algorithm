@@ -192,4 +192,51 @@ class SolutionTest extends Specification {
             [0, 0, 0]    | [0, 0, 0]          // 全相同元素
             [-1, 0, 1]   | [1, 0, -1]
     }
+
+    def "Test intersectionBySet"() {
+        when:
+            Integer[] result = solution.intersectionBySet(nums1 as int[], nums2 as int[])
+        then:
+            Arrays.equals(result, expected as Integer[])
+
+        where:
+            nums1           | nums2       | expected
+            [1, 2, 2, 1]    | [2, 2]     | [2]
+            [1, 2, 3]       | [4, 5, 6]  | []
+            []              | [1, 2]     | []
+            [1, 2, 3]       | []         | []
+            [3, 4, 5]       | [3, 4, 5]  | [3, 4, 5]
+            [1, 2, 3, 3]    | [2, 3]     | [2, 3]
+    }
+
+    def "Test intersectionByMap"() {
+        when:
+            Integer[] result = solution.intersectionByMap(nums1 as int[], nums2 as int[])
+
+        then:
+            Arrays.equals(result, expected as Integer[])
+
+        where:
+            nums1           | nums2       | expected
+            [1, 2, 2, 1]    | [2, 2]     | [2, 2]
+            [1, 2, 3]       | [4, 5, 6]  | []
+            []              | [1, 2]     | []
+            [1, 2, 3]       | []         | []
+            [3, 4, 5]       | [3, 4, 5]  | [3, 4, 5]
+            [1, 2, 3, 3]    | [2, 3]     | [2, 3]
+            [1, 2, 2, 1]    | [2]        | [2]
+    }
+
+    def "Test minSubArrayLen"() {
+        expect:
+            solution.minSubArrayLen(target, nums as int[]) == expected
+
+        where:
+            target | nums                     | expected
+            7      | [2, 3, 1, 2, 4, 3]       | 2   // [4,3] 是最小子数组
+            4      | [1, 4, 4]                | 1   // [4] 是最小子数组
+            11     | [1, 1, 1, 1, 1, 1, 1, 1] | 0   // 没有满足条件的子数组
+            5      | [2, 1, 4]                | 2   // [1,4] 是最小子数组
+            5      | [5]                      | 1   // 只有一个元素且等于目标值
+    }
 }
