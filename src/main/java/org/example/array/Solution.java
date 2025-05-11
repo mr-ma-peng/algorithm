@@ -141,7 +141,7 @@ public class Solution {
         return res;
     }
 
-    public void rotate(int[][] matrix) {
+    public void rotateClockwise(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = i; j < matrix.length; j++) {
                 int temp = matrix[i][j];
@@ -152,6 +152,20 @@ public class Solution {
 
         for (int[] its : matrix) {
             reverse(its);
+        }
+    }
+
+    public void rotateCounterClockwise(int[][] matrix) {
+        int len = matrix.length;
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < len - i; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[len - j - 1][len - i - 1];
+                matrix[len - j - 1][len - i - 1] = temp;
+            }
+        }
+        for (int[] row : matrix) {
+            reverse(row);
         }
     }
 
