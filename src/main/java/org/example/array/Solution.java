@@ -110,7 +110,8 @@ public class Solution {
         if (n < 2 || len < n) return res;
 
         if (n == 2) {
-            int left = start, right = len - 1;
+            int left = start;
+            int right = len - 1;
             while (left < right) {
                 int sum = nums[left] + nums[right];
                 int lr = nums[left];
@@ -138,5 +139,31 @@ public class Solution {
             }
         }
         return res;
+    }
+
+    public void rotate(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = i; j < matrix.length; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+
+        for (int[] its : matrix) {
+            reverse(its);
+        }
+    }
+
+    public void reverse(int[] arr) {
+        int l = 0;
+        int r = arr.length - 1;
+        while (l < r) {
+            int temp = arr[l];
+            arr[l] = arr[r];
+            arr[r] = temp;
+            l++;
+            r--;
+        }
     }
 }

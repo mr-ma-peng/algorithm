@@ -135,4 +135,42 @@ class SolutionTest extends Specification {
             []                     | 2   | 5      | [] // 空数组无法找到结果
             [0, 0, 0, 0]           | 4   | 0      | [[0, 0, 0, 0]] // 所有元素都是0
     }
+
+    def "Test rotate"() {
+        given:
+            int[][] matrix = input as int[][]
+
+        when:
+            solution.rotate(matrix)
+
+        then:
+            Arrays.deepEquals(matrix, expected as int[][])
+
+        where:
+            input                             | expected
+            []                                | []                        // 空矩阵
+            [[1]]                             | [[1]]                    // 单元素矩阵
+            [[1, 2], [3, 4]]                  | [[3, 1], [4, 2]]        // 2x2 矩阵
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]] | [[7, 4, 1], [8, 5, 2], [9, 6, 3]] // 3x3 矩阵
+    }
+
+    def "Test reverse"() {
+        given:
+            int[] arr = input as int[]
+
+        when:
+            solution.reverse(arr)
+
+        then:
+            Arrays.equals(arr, expected as int[])
+
+        where:
+            input        | expected
+            []           | []                   // 空数组
+            [1]          | [1]                 // 单元素数组
+            [1, 2, 3]    | [3, 2, 1]
+            [4, 5, 6, 7] | [7, 6, 5, 4]
+            [0, 0, 0]    | [0, 0, 0]          // 全相同元素
+            [-1, 0, 1]   | [1, 0, -1]
+    }
 }
