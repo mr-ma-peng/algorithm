@@ -185,4 +185,36 @@ public class Solution {
         }
         return len;
     }
+
+    public String sensitiveFieldEncrypted(String s, int k) {
+        List<String> commands = new ArrayList<>();
+
+        boolean isOpen = false;
+
+        StringBuilder command = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == '"') {
+                isOpen = !isOpen;
+            }
+
+            if (c != '_' || isOpen) {
+                command.append(c);
+            } else if (command.length() > 0) {
+                commands.add(command.toString());
+                command = new StringBuilder();
+            }
+        }
+
+        commands.forEach(System.out::println);
+
+        if (k >= commands.size()) {
+            return "ERROR";
+        } else {
+            commands.set(k, "******");
+            return String.join("_", commands);
+        }
+    }
 }
