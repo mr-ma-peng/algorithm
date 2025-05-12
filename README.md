@@ -1,74 +1,162 @@
-# algorithm
-practice algorithm
+Algorithm Practice
+这是一个用于练习算法的项目，包含多个常见数据结构与算法问题的实现。主要分为以下几个模块：array、string、search 和 linkedlist。
+## 📁 目录结构
 
-## array
-### MountainClimber
-1. 问题拆解，最小问题模式（一座山峰）
-2. 遍历O（n）数组
-   1. 找到山峰
-   2. 找到谷底
-   3. 遍历山峰，start， peak， end
-   4. 体力符合的山峰计数
-### MoveZeros
-1. 双指针
-   1. 一个指针遍历，一个指针记录非零元素
-   2. 遍历结束，非零元素后的元素置零
-   3. 交换非零元素和零元素
-### SortColors
-1. 双指针
-   1. 一个指针记录0，一个指针记录2
-   2. 遍历数组，遇到0，交换0的指针和当前指针，遇到2，交换2的指针和当前指针
-   3. 交换后，当前指针不变
-### MinSubArrayLen
-1. 滑动窗口
-   1. 两个指针，l， r
-   2. l指针遍历数组，r指针记录满足条件的子数组
-   3. 满足条件的子数组，l指针右移
-   4. 不满足条件的子数组，r指针右移
+```angular2html
+.
+├── src
+│   ├── main
+│   │   ├── java/org/example
+│   │   │   ├── array
+│   │   │   │   └── Solution.java        # 数组相关算法
+│   │   │   ├── linkedlist
+│   │   │   │   ├── ListNode.java          # 单链表节点类
+│   │   │   │   ├── DoublyListNode.java    # 双链表节点类
+│   │   │   │   └── Solution.java          # 链表操作
+│   │   │   ├── search
+│   │   │   │   └── Solution.java          # 搜索算法（如二分查找）
+│   │   │   └── string
+│   │   │       └── Solution.java          # 字符串处理算法
+│   │   └── resources                      # 资源文件
+│   └── test
+│       ├── groovy/org/example
+│       │   ├── array
+│       │   │   └── SolutionTest.groovy    # 数组单元测试
+│       │   ├── linkedlist
+│       │   │   └── SolutionTest.groovy    # 链表单元测试
+│       │   ├── search
+│       │   │   └── SolutionTest.groovy    # 搜索单元测试
+│       │   └── string
+│       │       └── SolutionTest.groovy    # 字符串单元测试
+│       └── resources
+├── LICENSE                                # Apache License 2.0
+├── README.md                              # 当前文档
+├── build.gradle                           # Gradle 构建脚本
+├── gradlew                                # Unix 启动脚本
+├── gradlew.bat                            # Windows 启动脚本
+└── settings.gradle                        # Gradle 设置
 
-### MountainPeaksCounter
-1. 边界条件
-2. O（n） 遍历获取左增右减的山峰
+```
 
-### IntersectionOfTwoArrays
-1. 两个集合
-   1. 遍历一个集合，另一个集合查找
-2. map 记录次数
 
-## String
-### LongestEvenO
-1. s + s
-2. 前缀和
-3. 哈希表记录每个前缀和第一次出现的位置
-4. 遍历前缀和，找到最长的偶数长度的子串
-### LengthOfLongestSubstring
-1. 滑动窗口
-   1. 两个指针，l， r
-   2. r指针遍历字符串，l指针记录满足条件的子串
-   3. 满足条件的子串，l指针右移
-   4. 不满足条件的子串，r指针右移
-   5. freq记录字符出现次数
+## 📁 array 模块
+🔍 文件：Solution.java
+1. `twoSumTarget(int[] nums, Integer target, Integer start, Integer end)`
+   - 功能：查找两个数之和等于目标值的所有组合。
+   - 实现方式：
+     - 使用双指针法。
+     - 对数组进行排序后，从指定范围 `[start, end]` 内搜索满足条件的组合。
+     - 去重处理（跳过重复元素）。
+2. `threeSumTarget(int[] nums, int target)`
+   - 功能：查找三个数之和等于目标值的所有组合。
+   - 实现方式：
+     - 外层循环遍历每个元素，将其作为第一个数。
+     - 内部调用 `twoSumTarget()` 寻找剩下的两个数。
+     - 去重处理（跳过重复元素）。
+3. `nSumTarget(int[] nums, int n, int start, long target)`
+   - 功能：查找任意 n 个数之和等于目标值的所有组合。
+   - 实现方式：
+     - 递归实现。
+     - 当 `n == 2` 时，使用双指针法。
+     - 当 `n > 2` 时，递归调用 `nSumTarget(nums, n - 1, i + 1, target - nums[i])`。
+     - 去重处理（跳过重复元素）。
+4. `rotateClockwise(int[][] matrix)`
+   - 功能：顺时针旋转二维矩阵 90 度。
+   - 实现方式：
+     - 先对角线翻转（交换 `matrix[i][j]` 和 `matrix[j][i]`）。
+     - 然后每行反转（使用 `reverse()` 方法）。
+5. `rotateCounterClockwise(int[][] matrix)`
+   - 功能：逆时针旋转二维矩阵 90 度。
+   - 实现方式：
+     - 先反向对角线翻转（交换 `matrix[i][j]` 和 `matrix[len - j - 1][len - i - 1]`）。
+     - 然后每行反转（使用 `reverse()` 方法）。
+6. `reverse(int[] arr)`
+   - 功能：原地反转数组。
+   - 实现方式：
+     - 双指针法，交换头尾元素直到相遇。
+7. `intersectionBySet(int[] nums1, int[] nums2)`
+   - 功能：返回两个数组的交集（不包含重复元素）。
+   - 实现方式：
+     - 使用 `HashSet` 存储第一个数组的元素。
+     - 遍历第二个数组，如果在集合中存在，则加入结果集合。
+8. `intersectionByMap(int[] nums1, int[] nums2)`
+   - 功能：返回两个数组的交集（包含重复元素）。
+   - 实现方式：
+     - 使用 `HashMap` 记录第一个数组中每个元素出现的次数。
+     - 遍历第二个数组，如果存在且次数大于 0，则加入结果并减少次数。
 
-### SmallestSubsequence
-1. 双循环，找到最小的字符
-2. 外部变量记录字符出现次数
+## 📁 string 模块
+🔍 文件：Solution.java
+1. `minWindow(String s, String t)`
+   - 功能：在字符串 `s` 中找到包含所有 `t` 字符的最短子串。
+   - 实现方式：
+     - 滑动窗口算法。
+     - 使用两个哈希表记录字符频率，一个记录需求，一个记录当前窗口内的字符。
+     - 动态调整窗口大小以找到最小符合条件的子串。
+2. `checkInclusion(String t, String s)`
+   - 功能：判断 `t` 是否是 `s` 的排列子串。
+   - 实现方式：
+     - 滑动窗口算法。
+     - 维护固定大小的窗口，窗口大小等于 `t` 的长度。
+     - 如果窗口内字符频率与 `t` 相同，则返回 `true`。
+3. `findAnagrams(String s, String t)`
+   - 功能：查找 `s` 中所有 `t` 的变位词（字母异位词）的起始索引。
+   - 实现方式：
+     - 滑动窗口算法。
+     - 窗口大小等于 `t` 的长度。
+     - 每次滑动窗口，检查是否满足条件。
+4. `lengthOfLongestSubstringUsingArray(String s)`
+   - 功能：查找不含重复字符的最长子串长度。
+   - 实现方式：
+     - 数组记录字符出现频率。
+     - 滑动窗口算法。
+5. `lengthOfLongestSubstringUsingMap(String s)`
+   - 功能：查找不含重复字符的最长子串长度。
+   - 实现方式：
+     - 使用哈希表记录字符频率。
+     - 滑动窗口算法。
+6. `sensitiveFieldEncrypted(String s, int k)`
+   - 功能：将第 `k` 个字段替换为 `"******"`，忽略被双引号包裹的部分。
+   - 实现方式：
+     - 遍历字符串，识别字段边界。
+     - 替换第 `k` 个字段，其他字段保留。
+7. `longestPalindrome(String s)`
+   - 功能：查找最长回文子串。
+   - 实现方式：
+     - 中心扩展法。
+     - 分别考虑奇数和偶数长度的回文。
+8. `reverseWords(String s)`
+   - 功能：反转字符串中的每个单词。
+   - 实现方式：
+     - 使用 `StringBuilder` 反转整个字符串。
+     - 拆分字符串成单词列表。
+     - 反转每个单词，并拼接成结果。
 
-## search
-### BinarySearch
-1. 迭代
-   1. while 循环 找中值
-2. 递归
+## 📁 linkedlist 模块
+🔍 文件：Solution.java
+1. `reverse(ListNode head)`
+   - 功能：反转链表。
+   - 实现方式：
+     - 迭代法，维护前驱节点、当前节点、后继节点。
+2. `reverse(ListNode head, int m, int n)`
+   - 功能：反转链表中第 `m` 到 `n` 个节点。
+   - 实现方式：
+     - 找到第 `m` 个节点的前驱。
+     - 反转 `m` 到 `n` 节点之间的部分。
+     - 重新连接前后部分。
 
-## LinkedList
-### ReverseLinkedList
-1. 节点类
-   1. 存储数据和对下一个节点的引用
-2. 链表类
-   1. append
-      1. 在链表末尾添加一个新节点
-   2. printList
-      1. 打印链表中的所有元素
-   3. reverse
-      1. 反转链表
-   4. reverse m n
-      1. 反转链表中的m到n的元素
+## 📁 search 模块
+🔍 文件：Solution.java
+1. `binarySearch(int[] nums, int target)`
+   - 功能：查找有序数组中目标值的位置。
+   - 实现方式：
+     - 迭代法，每次比较中间值，缩小搜索范围。
+2. `binarySearchRecursive(int[] nums, int target)`
+   - 功能：递归实现二分查找。
+   - 实现方式：
+     - 递归缩小搜索范围，直到找到目标值或范围为空。
+
+## ✅ 测试文件
+- 每个模块都有对应的测试类（如 `SolutionTest.groovy`），覆盖了各种边界情况和正常情况。
+- 使用 [Spock Framework](https://spockframework.org/) 编写测试用例，支持数据驱动测试（`where:` 块）。
+- 包括正向测试、负向测试、空输入、重复元素等场景。
