@@ -2,7 +2,7 @@ Algorithm Practice
 这是一个用于练习算法的项目，包含多个常见数据结构与算法问题的实现。主要分为以下几个模块：array、string、search 和 linkedlist。
 ## 📁 目录结构
 
-```angular2html
+```text
 .
 ├── src
 │   ├── main
@@ -131,6 +131,11 @@ Algorithm Practice
      - 使用 `StringBuilder` 反转整个字符串。
      - 拆分字符串成单词列表。
      - 反转每个单词，并拼接成结果。
+9. `isPalindrome(String s)`
+   - 功能：判断字符串是否为回文串。
+   - 实现方式：
+     - 过滤非字母数字字符，统一转为小写。
+     - 双指针法检查字符对称性。
 
 ## 📁 linkedlist 模块
 🔍 文件：Solution.java

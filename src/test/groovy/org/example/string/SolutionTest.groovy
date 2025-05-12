@@ -128,4 +128,20 @@ class SolutionTest extends Specification {
             "aaa"          | "aaa"  // 所有字符都相同
             "aaaaa"        | "aaaaa"// 长度为奇数的全相同字符
     }
+
+    def "Test isPalindrome"() {
+        expect:
+            solution.isPalindrome(input as String) == expected
+
+        where:
+            input                            | expected
+            "A man, a plan, a canal: Panama" | true
+            "race a car"                     | false
+            ""                               | true
+            "a"                              | true
+            "ab"                             | false
+            "Madam"                          | true
+            "Was it a car or a cat I saw?"   | true
+            "No 'x' in Nixon"                | true
+    }
 }
