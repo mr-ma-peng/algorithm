@@ -8,9 +8,9 @@ public class Solution {
         while (fast != null) {
             if (!fast.val.equals(slow.val)) {
                 slow.next = fast;
-                slow = slow.getNext();
+                slow = slow.next;
             }
-            fast = fast.getNext();
+            fast = fast.next;
         }
         slow.next = null;
         return head;

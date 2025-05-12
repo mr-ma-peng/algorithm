@@ -1,21 +1,16 @@
 package org.example.linkedlist;
 
 public class ListNode<T> {
-    public T val;
-    public ListNode<T> next;
-
-    public ListNode() {}
+    T val;
+    ListNode<T> next;
 
     public ListNode(T val) {
         this.val = val;
+        this.next = null;
     }
 
     public ListNode(T val, ListNode<T> next) {
         this.val = val;
         this.next = next;
-    }
-
-    public ListNode<T> getNext() {
-        return next;
     }
 }
