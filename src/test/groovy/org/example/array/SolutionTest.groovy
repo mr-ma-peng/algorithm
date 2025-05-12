@@ -260,14 +260,11 @@ class SolutionTest extends Specification {
     }
 
     def "Test generateMatrix"() {
-        given:
-            int[][] expectedMatrix = expected as int[][]
-
         when:
             int[][] result = solution.generateMatrix(n)
 
         then:
-            Arrays.deepEquals(result, expectedMatrix)
+            Arrays.deepEquals(result, expected as int[][])
 
         where:
             n | expected

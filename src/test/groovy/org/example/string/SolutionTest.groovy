@@ -66,4 +66,32 @@ class SolutionTest extends Specification {
             "   a   b c  "            | "c b a"
     }
 
+    def "Test lengthOfLongestSubstringUsingArray"() {
+        expect:
+            solution.lengthOfLongestSubstringUsingArray(input as String) == expected
+
+        where:
+            input           | expected
+            "abcabcbb"      | 3
+            "bbbbb"         | 1
+            "pwwkew"        | 3
+            ""              | 0
+            "abcdef"        | 6
+            "aab"           | 2
+    }
+
+    def "Test lengthOfLongestSubstringUsingMap"() {
+        expect:
+            solution.lengthOfLongestSubstringUsingMap(input as String) == expected
+
+        where:
+            input           | expected
+            "abcabcbb"      | 3
+            "bbbbb"         | 1
+            "pwwkew"        | 3
+            ""              | 0
+            "abcdef"        | 6
+            "aab"           | 2
+    }
+
 }

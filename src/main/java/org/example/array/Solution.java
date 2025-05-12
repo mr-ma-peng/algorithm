@@ -288,7 +288,7 @@ public class Solution {
 
         int num = 1;
 
-        while (num < n * n) {
+        while (num <= n * n) {
             if (upperBound <= lowerBound) {
                 for (int i = leftBound; i <= rightBound; i++) {
                     matrix[upperBound][i] = num++;
