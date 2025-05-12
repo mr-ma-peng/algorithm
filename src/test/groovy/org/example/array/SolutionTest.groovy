@@ -200,13 +200,13 @@ class SolutionTest extends Specification {
             Arrays.equals(result, expected as Integer[])
 
         where:
-            nums1           | nums2       | expected
-            [1, 2, 2, 1]    | [2, 2]     | [2]
-            [1, 2, 3]       | [4, 5, 6]  | []
-            []              | [1, 2]     | []
-            [1, 2, 3]       | []         | []
-            [3, 4, 5]       | [3, 4, 5]  | [3, 4, 5]
-            [1, 2, 3, 3]    | [2, 3]     | [2, 3]
+            nums1        | nums2     | expected
+            [1, 2, 2, 1] | [2, 2]    | [2]
+            [1, 2, 3]    | [4, 5, 6] | []
+            []           | [1, 2]    | []
+            [1, 2, 3]    | []        | []
+            [3, 4, 5]    | [3, 4, 5] | [3, 4, 5]
+            [1, 2, 3, 3] | [2, 3]    | [2, 3]
     }
 
     def "Test intersectionByMap"() {
@@ -217,14 +217,14 @@ class SolutionTest extends Specification {
             Arrays.equals(result, expected as Integer[])
 
         where:
-            nums1           | nums2       | expected
-            [1, 2, 2, 1]    | [2, 2]     | [2, 2]
-            [1, 2, 3]       | [4, 5, 6]  | []
-            []              | [1, 2]     | []
-            [1, 2, 3]       | []         | []
-            [3, 4, 5]       | [3, 4, 5]  | [3, 4, 5]
-            [1, 2, 3, 3]    | [2, 3]     | [2, 3]
-            [1, 2, 2, 1]    | [2]        | [2]
+            nums1        | nums2     | expected
+            [1, 2, 2, 1] | [2, 2]    | [2, 2]
+            [1, 2, 3]    | [4, 5, 6] | []
+            []           | [1, 2]    | []
+            [1, 2, 3]    | []        | []
+            [3, 4, 5]    | [3, 4, 5] | [3, 4, 5]
+            [1, 2, 3, 3] | [2, 3]    | [2, 3]
+            [1, 2, 2, 1] | [2]       | [2]
     }
 
     def "Test minSubArrayLen"() {
@@ -239,4 +239,24 @@ class SolutionTest extends Specification {
             5      | [2, 1, 4]                | 2   // [1,4] 是最小子数组
             5      | [5]                      | 1   // 只有一个元素且等于目标值
     }
+
+    def "Test spiralOrder"() {
+        when:
+            List<Integer> result = solution.spiralOrder(matrix as int[][])
+
+        then:
+            result == expected
+
+        where:
+            matrix                            | expected
+            []                                | []                                          // 空矩阵
+            [[1]]                             | [1]                                        // 单个元素
+            [[1, 2, 3]]                       | [1, 2, 3]                                  // 单行矩阵
+            [[1], [2], [3]]                   | [1, 2, 3]                                  // 单列矩阵
+            [[1, 2], [3, 4]]                  | [1, 2, 4, 3]                               // 2x2 矩阵
+            [[1, 2, 3], [4, 5, 6], [7, 8, 9]] | [1, 2, 3, 6, 9, 8, 7, 4, 5]         // 3x3 矩阵
+            [[1, 2, 3, 4], [5, 6, 7, 8]]      | [1, 2, 3, 4, 8, 7, 6, 5]                 // 2x4 矩阵
+            [[1, 2], [3, 4], [5, 6]]          | [1, 2, 4, 6, 5, 3]                         // 3x2 矩阵
+    }
+
 }
