@@ -259,4 +259,22 @@ class SolutionTest extends Specification {
             [[1, 2], [3, 4], [5, 6]]          | [1, 2, 4, 6, 5, 3]                         // 3x2 矩阵
     }
 
+    def "Test generateMatrix"() {
+        given:
+            int[][] expectedMatrix = expected as int[][]
+
+        when:
+            int[][] result = solution.generateMatrix(n)
+
+        then:
+            Arrays.deepEquals(result, expectedMatrix)
+
+        where:
+            n | expected
+            0 | []                                                    // n = 0，返回空矩阵
+            1 | [[1]]                                                 // n = 1
+            2 | [[1, 2], [4, 3]]                                      // n = 2，顺时针螺旋
+            3 | [[1, 2, 3], [8, 9, 4], [7, 6, 5]]                     // n = 3，螺旋填充
+            4 | [[1, 2, 3, 4], [12, 13, 14, 5], [11, 16, 15, 6], [10, 9, 8, 7]] // n = 4
+    }
 }

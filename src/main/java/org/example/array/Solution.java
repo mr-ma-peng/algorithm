@@ -243,37 +243,77 @@ public class Solution {
             return new ArrayList<>();
         }
         int m = matrix.length, n = matrix[0].length;
-        int upper_bound = 0, lower_bound = m - 1;
-        int left_bound = 0, right_bound = n - 1;
+        int upperBound = 0;
+        int lowerBound = m - 1;
+        int leftBound = 0;
+        int rightBound = n - 1;
 
         List<Integer> res = new ArrayList<>();
 
         while (res.size() < m * n) {
-            if (upper_bound <= lower_bound) {
-                for (int i = left_bound; i <= right_bound; i++) {
-                    res.add(matrix[upper_bound][i]);
+            if (upperBound <= lowerBound) {
+                for (int i = leftBound; i <= rightBound; i++) {
+                    res.add(matrix[upperBound][i]);
                 }
-                upper_bound++;
+                upperBound++;
             }
-            if (left_bound <= right_bound) {
-                for (int i = upper_bound; i <= lower_bound; i++) {
-                    res.add(matrix[i][right_bound]);
+            if (leftBound <= rightBound) {
+                for (int i = upperBound; i <= lowerBound; i++) {
+                    res.add(matrix[i][rightBound]);
                 }
-                right_bound--;
+                rightBound--;
             }
-            if (upper_bound <= lower_bound) {
-                for (int i = right_bound; i >= left_bound; i--) {
-                    res.add(matrix[lower_bound][i]);
+            if (upperBound <= lowerBound) {
+                for (int i = rightBound; i >= leftBound; i--) {
+                    res.add(matrix[lowerBound][i]);
                 }
-                lower_bound--;
+                lowerBound--;
             }
-            if (left_bound <= right_bound) {
-                for (int i = lower_bound; i >= upper_bound; i--) {
-                    res.add(matrix[i][left_bound]);
+            if (leftBound <= rightBound) {
+                for (int i = lowerBound; i >= upperBound; i--) {
+                    res.add(matrix[i][leftBound]);
                 }
-                left_bound++;
+                leftBound++;
             }
         }
         return res;
+    }
+
+    public int[][] generateMatrix(int n) {
+        int[][] matrix = new int[n][n];
+        int upperBound = 0;
+        int lowerBound = n - 1;
+        int leftBound = 0;
+        int rightBound = n - 1;
+
+        int num = 1;
+
+        while (num < n * n) {
+            if (upperBound <= lowerBound) {
+                for (int i = leftBound; i <= rightBound; i++) {
+                    matrix[upperBound][i] = num++;
+                }
+                upperBound++;
+            }
+            if (leftBound <= rightBound) {
+                for (int i = upperBound; i <= lowerBound; i++) {
+                    matrix[i][rightBound] = num++;
+                }
+                rightBound--;
+            }
+            if (upperBound <= lowerBound) {
+                for (int i = rightBound; i >= leftBound; i--) {
+                    matrix[lowerBound][i] = num++;
+                }
+                lowerBound--;
+            }
+            if (leftBound <= rightBound) {
+                for (int i = lowerBound; i >= upperBound; i--) {
+                    matrix[i][leftBound] = num++;
+                }
+                leftBound++;
+            }
+        }
+        return matrix;
     }
 }
