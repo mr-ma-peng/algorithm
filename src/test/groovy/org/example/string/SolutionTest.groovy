@@ -112,4 +112,20 @@ class SolutionTest extends Specification {
             'field_with_"under_score"_'     | 0 | '******_with_"under_score"'
             'field_with_"under_score"_end_' | 2 | 'field_with_******_end'
     }
+
+    def "Test longestPalindrome"() {
+        expect:
+            solution.longestPalindrome(input as String) == expected
+
+        where:
+            input          | expected
+            "cbbd"         | "bb"   // 中间两个相同字符的最长回文子串
+            "a"            | "a"    // 单个字符输入
+            "racecar"      | "racecar" // 完整的回文字符串
+            "abacdfgdcaba" | "aba" // 存在多个可能的回文，但最长为 "aba"
+            "abba"         | "abba" // 偶数长度的回文
+            ""             | ""     // 空字符串输入
+            "aaa"          | "aaa"  // 所有字符都相同
+            "aaaaa"        | "aaaaa"// 长度为奇数的全相同字符
+    }
 }
