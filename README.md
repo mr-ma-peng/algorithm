@@ -94,6 +94,12 @@ Algorithm Practice
        - 若为 2，将其交换到 p2 边界，并左移 p2。
        - 若为 1，直接右移 p。
      - 时间复杂度为 O(n)，空间复杂度为 O(1)。
+10. `merge(int[] nums1, int m, int[] nums2, int n)`
+    - 功能：将两个有序数组 `nums1` 和 `nums2` 合并为一个有序数组，并存储在 `nums1` 中。
+    - 实现方式：
+        - 使用双指针法，从后往前合并。
+        - 比较 `nums1` 和 `nums2` 的元素，将较大的元素放在 `nums1` 的末尾。
+        - 时间复杂度为 O(m + n)，空间复杂度为 O(1)。
 
 ## 📁 string 模块
 🔍 文件：Solution.java
