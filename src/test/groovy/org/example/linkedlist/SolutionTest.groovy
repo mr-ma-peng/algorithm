@@ -127,4 +127,77 @@ class SolutionTest extends Specification {
             result.next == null
     }
 
+    def "test mergeTwoLists merges two sorted lists correctly"() {
+        given: "Two sorted linked lists"
+            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(2, new ListNode<>(4)))
+            ListNode<Integer> l2 = new ListNode<>(1, new ListNode<>(3, new ListNode<>(4)))
+
+        when: "Merge the two lists"
+            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+
+        then: "Result should be [1, 1, 2, 3, 4, 4]"
+            result.val == 1
+            result.next.val == 1
+            result.next.next.val == 2
+            result.next.next.next.val == 3
+            result.next.next.next.next.val == 4
+            result.next.next.next.next.next.val == 4
+            result.next.next.next.next.next.next == null
+    }
+
+    def "test mergeTwoLists with both lists empty"() {
+        given: "Both lists are empty"
+            ListNode<Integer> l1 = null
+            ListNode<Integer> l2 = null
+
+        when: "Merge the two lists"
+            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+
+        then: "Result should be null"
+            result == null
+    }
+
+    def "test mergeTwoLists with one list empty"() {
+        given: "One list is empty"
+            ListNode<Integer> l1 = null
+            ListNode<Integer> l2 = new ListNode<>(0)
+
+        when: "Merge the two lists"
+            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+
+        then: "Result should be [0]"
+            result.val == 0
+            result.next == null
+    }
+
+    def "test mergeTwoLists with one element in each list"() {
+        given: "Each list has one element"
+            ListNode<Integer> l1 = new ListNode<>(2)
+            ListNode<Integer> l2 = new ListNode<>(1)
+
+        when: "Merge the two lists"
+            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+
+        then: "Result should be [1, 2]"
+            result.val == 1
+            result.next.val == 2
+            result.next.next == null
+    }
+
+    def "test mergeTwoLists with duplicate elements"() {
+        given: "Each list contains duplicates"
+            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(1, new ListNode<>(1)))
+            ListNode<Integer> l2 = new ListNode<>(2, new ListNode<>(2))
+
+        when: "Merge the two lists"
+            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+
+        then: "Result should be [1, 1, 1, 2, 2]"
+            result.val == 1
+            result.next.val == 1
+            result.next.next.val == 1
+            result.next.next.next.val == 2
+            result.next.next.next.next.val == 2
+            result.next.next.next.next.next == null
+    }
 }

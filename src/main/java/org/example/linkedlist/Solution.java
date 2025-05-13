@@ -44,4 +44,28 @@ public class Solution {
         newTail.next = null;
         return newHead;
     }
+
+    public ListNode<Integer> mergeTwoLists(ListNode<Integer> l1, ListNode<Integer> l2) {
+        ListNode<Integer> dummy = new ListNode<>(-1);
+        ListNode<Integer> p = dummy;
+        ListNode<Integer> p1 = l1;
+        ListNode<Integer> p2 = l2;
+        while (p1 != null && p2 != null) {
+            if (p1.val >= p2.val) {
+                p.next = p2;
+                p2 = p2.next;
+            } else {
+                p.next = p1;
+                p1 = p1.next;
+            }
+            p = p.next;
+        }
+        if (p1 != null) {
+            p.next = p1;
+        }
+        if (p2 != null) {
+            p.next = p2;
+        }
+        return dummy.next;
+    }
 }
