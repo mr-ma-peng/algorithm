@@ -322,4 +322,22 @@ class SolutionTest extends Specification {
             []                 | 0      | []         | 0      | []
             [0, 0, 0, 0]       | 2      | [1, 2]     | 2      | [0, 0, 1, 2]
     }
+
+    def "Test sortedSquares"() {
+        when:
+            int[] result = solution.sortedSquares(nums as int[])
+
+        then:
+            Arrays.equals(result, expected as int[])
+
+        where:
+            nums              | expected
+            []                | []
+            [1]               | [1]
+            [1, 2, 3]         | [1, 4, 9]
+            [-3, -2, 0, 1, 2] | [0, 1, 4, 4, 9]
+            [-5, -3, -1]      | [1, 9, 25]
+            [0, 0, 0]         | [0, 0, 0]
+            [-2, -1, 0, 3, 4] | [0, 1, 4, 9, 16]
+    }
 }

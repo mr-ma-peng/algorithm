@@ -356,4 +356,19 @@ public class Solution {
             nums1[tail--] = nums2[n2--];
         }
     }
+
+    public int[] sortedSquares(int[] nums) {
+        int l = 0;
+        int r = nums.length - 1;
+        int tail = nums.length - 1;
+        int[] res = new int[nums.length];
+        while (l <= r) {
+            if (Math.abs(nums[l]) >= Math.abs(nums[r])) {
+                res[tail--] = nums[l++] * nums[l - 1];
+            } else {
+                res[tail--] = nums[r--] * nums[r + 1];
+            }
+        }
+        return res;
+    }
 }
