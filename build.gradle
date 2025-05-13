@@ -31,6 +31,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.github.javaparser:javaparser-core:3.25.0'
+
     testImplementation 'org.codehaus.groovy:groovy:3.0.22'
     testImplementation 'org.spockframework:spock-core:2.2-groovy-3.0'
 
