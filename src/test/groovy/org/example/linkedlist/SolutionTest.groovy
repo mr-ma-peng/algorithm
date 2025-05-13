@@ -200,4 +200,61 @@ class SolutionTest extends Specification {
             result.next.next.next.next.val == 2
             result.next.next.next.next.next == null
     }
+
+    def "test partition with x"() {
+        given: "A linked list: 1 -> 4 -> 3 -> 2 -> 5 -> 2 -> null"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(4, new ListNode<>(3, new ListNode<>(2, new ListNode<>(5, new ListNode<>(2))))))
+
+        when: "Partition the list with x=3"
+            ListNode<Integer> result = solution.partition(head, 3)
+
+        then: "Result should be 1 -> 2 -> 2 -> 4 -> 3 -> 5 -> null"
+            result.val == 1
+            result.next.val == 2
+            result.next.next.val == 2
+            result.next.next.next.val == 4
+            result.next.next.next.next.val == 3
+            result.next.next.next.next.next.val == 5
+            result.next.next.next.next.next.next == null
+    }
+
+    def "test partition with empty list"() {
+        given: "Null input"
+            ListNode<Integer> head = null
+
+        when: "Partition the list with x=5"
+            ListNode<Integer> result = solution.partition(head, 5)
+
+        then: "Result should be null"
+            result == null
+    }
+
+    def "test partition with all elements greater than x"() {
+        given: "A linked list: 4 -> 5 -> 6 -> null"
+            ListNode<Integer> head = new ListNode<>(4, new ListNode<>(5, new ListNode<>(6)))
+
+        when: "Partition the list with x=3"
+            ListNode<Integer> result = solution.partition(head, 3)
+
+        then: "Result should be 4 -> 5 -> 6 -> null"
+            result.val == 4
+            result.next.val == 5
+            result.next.next.val == 6
+            result.next.next.next == null
+    }
+
+    def "test partition with all elements less than x"() {
+        given: "A linked list: 1 -> 2 -> 3 -> null"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+
+        when: "Partition the list with x=4"
+            ListNode<Integer> result = solution.partition(head, 4)
+
+        then: "Result should be 1 -> 2 -> 3 -> null"
+            result.val == 1
+            result.next.val == 2
+            result.next.next.val == 3
+            result.next.next.next == null
+    }
+
 }

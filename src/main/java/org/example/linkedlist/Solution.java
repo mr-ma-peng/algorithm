@@ -68,4 +68,27 @@ public class Solution {
         }
         return dummy.next;
     }
+
+    public ListNode<Integer> partition(ListNode<Integer> head, int x) {
+        ListNode<Integer> dummy1 = new ListNode<>(-1);
+        ListNode<Integer> dummy2 = new ListNode<>(-1);
+        ListNode<Integer> p1 = dummy1;
+        ListNode<Integer> p2 = dummy2;
+        ListNode<Integer> p = head;
+        while (p != null) {
+            if (p.val < x) {
+                p1.next = p;
+                p1 = p1.next;
+            } else {
+                p2.next = p;
+                p2 = p2.next;
+            }
+            ListNode<Integer> temp = p.next;
+            p.next = null;
+            p = temp;
+        }
+        p1.next = dummy2.next;
+
+        return dummy1.next;
+    }
 }
