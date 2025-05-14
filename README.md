@@ -187,6 +187,15 @@ Algorithm Practice
     - 时间复杂度：O(n)，其中 n 是链表长度。
     - 空间复杂度：O(1)（仅使用常量级额外空间）。
     - 应用场景：快速排序中的划分阶段、数据分组处理。
+5. [mergeKLists(ListNode<Integer>[] lists)](src/main/java/org/example/linkedlist/Solution.java#L98)
+    - 功能：合并多个升序排列的链表为一个新的升序链表。
+    - 实现方式：
+      - 使用优先队列（PriorityQueue）维护当前各链表的头节点。
+      - 每次从队列中取出值最小的节点，并将其下一个节点加入队列。
+      - 直到队列为空，完成合并。
+    - 时间复杂度：O(N log k)，其中 N 是所有链表中的总节点数，k 是链表数量。
+    - 空间复杂度：O(k)（优先队列中最多存储 k 个节点）。
+    - 应用场景：合并多个有序数据流、多路归并排序等场景。
 
 ## 📁 search 模块
 🔍 文件：Solution.java

@@ -1,5 +1,8 @@
 package org.example.linkedlist;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class Solution {
     public ListNode<Integer> deleteDuplicates(ListNode<Integer> head) {
         if (head == null) return null;
@@ -90,5 +93,26 @@ public class Solution {
         p1.next = dummy2.next;
 
         return dummy1.next;
+    }
+
+    public ListNode<Integer> mergeKLists(ListNode<Integer>[] lists) {
+        if (lists.length == 0) return null;
+        ListNode<Integer> dummy = new ListNode<>(-1);
+        ListNode<Integer> p = dummy;
+        PriorityQueue<ListNode<Integer>> pq = new PriorityQueue<>(lists.length, Comparator.comparingInt(a -> a.val));
+        for (ListNode<Integer> item : lists) {
+            if (item != null) {
+                pq.add(item);
+            }
+        }
+        while (!pq.isEmpty()) {
+            ListNode<Integer> node = pq.poll();
+            p.next = node;
+            p = p.next;
+            if (node.next != null) {
+                pq.add(node.next);
+            }
+        }
+        return dummy.next;
     }
 }

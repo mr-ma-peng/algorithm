@@ -257,4 +257,81 @@ class SolutionTest extends Specification {
             result.next.next.next == null
     }
 
+    def "test mergeKLists with normal input"() {
+        given: "Three sorted linked lists"
+            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(4, new ListNode<>(5)))
+            ListNode<Integer> l2 = new ListNode<>(1, new ListNode<>(3, new ListNode<>(4)))
+            ListNode<Integer> l3 = new ListNode<>(2, new ListNode<>(6))
+            ListNode<Integer>[] lists = [l1, l2, l3] as ListNode<Integer>[]
+
+        when: "Merge the lists"
+            ListNode<Integer> result = solution.mergeKLists(lists)
+
+        then: "Result should be [1, 1, 2, 3, 4, 4, 5, 6]"
+            result.val == 1
+            result.next.val == 1
+            result.next.next.val == 2
+            result.next.next.next.val == 3
+            result.next.next.next.next.val == 4
+            result.next.next.next.next.next.val == 4
+            result.next.next.next.next.next.next.val == 5
+            result.next.next.next.next.next.next.next.val == 6
+            result.next.next.next.next.next.next.next.next == null
+    }
+
+    def "test mergeKLists with empty array"() {
+        given: "An empty array of linked lists"
+            ListNode<Integer>[] lists = [] as ListNode<Integer>[]
+
+        when: "Merge the lists"
+            ListNode<Integer> result = solution.mergeKLists(lists)
+
+        then: "Result should be null"
+            result == null
+    }
+
+    def "test mergeKLists with all lists null"() {
+        given: "An array of null linked lists"
+            ListNode<Integer>[] lists = [null, null, null] as ListNode<Integer>[]
+
+        when: "Merge the lists"
+            ListNode<Integer> result = solution.mergeKLists(lists)
+
+        then: "Result should be null"
+            result == null
+    }
+
+    def "test mergeKLists with single list"() {
+        given: "A single linked list"
+            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(4, new ListNode<>(5)))
+            ListNode<Integer>[] lists = [l1] as ListNode<Integer>[]
+
+        when: "Merge the lists"
+            ListNode<Integer> result = solution.mergeKLists(lists)
+
+        then: "Result should be the same as the input list"
+            result.val == 1
+            result.next.val == 4
+            result.next.next.val == 5
+            result.next.next.next == null
+    }
+
+    def "test mergeKLists with mixed null and non-null lists"() {
+        given: "An array with some null and some non-null linked lists"
+            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(4, new ListNode<>(5)))
+            ListNode<Integer> l2 = null
+            ListNode<Integer> l3 = new ListNode<>(2, new ListNode<>(6))
+            ListNode<Integer>[] lists = [l1, l2, l3] as ListNode<Integer>[]
+
+        when: "Merge the lists"
+            ListNode<Integer> result = solution.mergeKLists(lists)
+
+        then: "Result should be [1, 2, 4, 5, 6]"
+            result.val == 1
+            result.next.val == 2
+            result.next.next.val == 4
+            result.next.next.next.val == 5
+            result.next.next.next.next.val == 6
+            result.next.next.next.next.next == null
+    }
 }
