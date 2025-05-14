@@ -208,3 +208,4 @@ Algorithm Practice
 - 每个模块都有对应的测试类（如 `SolutionTest.groovy`），覆盖了各种边界情况和正常情况。
 - 使用 [Spock Framework](https://spockframework.org/) 编写测试用例，支持数据驱动测试（`where:` 块）。
 - 包括正向测试、负向测试、空输入、重复元素等场景。
+![testReportImg.png](testReportImg.png)
