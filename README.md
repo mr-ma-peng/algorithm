@@ -196,6 +196,14 @@ Algorithm Practice
     - 时间复杂度：O(N log k)，其中 N 是所有链表中的总节点数，k 是链表数量。
     - 空间复杂度：O(k)（优先队列中最多存储 k 个节点）。
     - 应用场景：合并多个有序数据流、多路归并排序等场景。
+6. [findFromEnd(ListNode<Integer> head, int k)](src/main/java/org/example/linkedlist/Solution.java#L118)
+   - 功能：查找链表中倒数第 k 个节点。
+   - 实现方式：
+     - 使用双指针法，p1 先走 k 步，然后 p1 和 p2 同时前进直到 p1 到达末尾。
+     - 返回 p2 所指向的节点。
+   - 边界情况处理：
+     - 当 k 大于链表长度时返回 null
+     - 当链表为空时返回 null
 
 ## 📁 search 模块
 🔍 文件：Solution.java

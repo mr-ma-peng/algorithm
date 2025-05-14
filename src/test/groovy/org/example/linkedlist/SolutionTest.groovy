@@ -201,6 +201,39 @@ class SolutionTest extends Specification {
             result.next.next.next.next.next == null
     }
 
+    def "test findFromEnd finds correct node from end"() {
+        given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+
+        when: "Find 2nd node from end"
+            ListNode<Integer> result = solution.findFromEnd(head, 2)
+
+        then: "Result should be node with value 4"
+            result.val == 4
+    }
+
+    def "test findFromEnd with k equals to list length"() {
+        given: "A linked list: 1 -> 2 -> 3 -> null"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+
+        when: "Find 3rd node from end (head)"
+            ListNode<Integer> result = solution.findFromEnd(head, 3)
+
+        then: "Result should be node with value 1"
+            result.val == 1
+    }
+
+    def "test findFromEnd with empty list"() {
+        given: "Null input"
+            ListNode<Integer> head = null
+
+        when: "Find 2nd node from end"
+            ListNode<Integer> result = solution.findFromEnd(head, 2)
+
+        then: "Result should be null"
+            result == null
+    }
+
     def "test partition with x"() {
         given: "A linked list: 1 -> 4 -> 3 -> 2 -> 5 -> 2 -> null"
             ListNode<Integer> head = new ListNode<>(1, new ListNode<>(4, new ListNode<>(3, new ListNode<>(2, new ListNode<>(5, new ListNode<>(2))))))

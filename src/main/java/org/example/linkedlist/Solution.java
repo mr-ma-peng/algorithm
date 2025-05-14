@@ -115,4 +115,18 @@ public class Solution {
         }
         return dummy.next;
     }
+
+    ListNode<Integer> findFromEnd(ListNode<Integer> head, int k) {
+        ListNode<Integer> p1 = head;
+        ListNode<Integer> p2 = head;
+        int index = 0;
+        while (p1 != null) {
+            if (index >= k) {
+                p2 = p2.next;
+            }
+            p1 = p1.next;
+            index++;
+        }
+        return p2;
+    }
 }
