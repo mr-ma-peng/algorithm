@@ -212,6 +212,11 @@ Algorithm Practice
      - 修改该节点的 next 指针完成删除。
    - 时间复杂度：O(n)，需要遍历链表两次（一次确定长度，一次删除节点）。
    - 空间复杂度：O(1)。
+8. [middleNode(ListNode<Integer> head)](src/main/java/org/example/linkedlist/Solution.java#L141)
+   - 功能：查找链表的中间节点。
+   - 实现方式：
+     - 使用快慢指针法，快指针每次走两步，慢指针每次走一步。
+     - 当快指针到达末尾时，慢指针正好在中间位置。
 
 ## 📁 search 模块
 🔍 文件：Solution.java

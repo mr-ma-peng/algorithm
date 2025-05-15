@@ -234,6 +234,17 @@ class SolutionTest extends Specification {
             result == null
     }
 
+    def "test middleNode finds the middle node correctly"() {
+        given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+
+        when: "Find the middle node"
+            ListNode<Integer> result = solution.middleNode(head)
+
+        then: "Result should be node with value 3"
+            result.val == 3
+    }
+
     def "test partition with x"() {
         given: "A linked list: 1 -> 4 -> 3 -> 2 -> 5 -> 2 -> null"
             ListNode<Integer> head = new ListNode<>(1, new ListNode<>(4, new ListNode<>(3, new ListNode<>(2, new ListNode<>(5, new ListNode<>(2))))))

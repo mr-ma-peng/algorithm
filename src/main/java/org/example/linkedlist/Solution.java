@@ -137,4 +137,14 @@ public class Solution {
         fromEnd.next = fromEnd.next.next;
         return dummy.next;
     }
+
+    public ListNode<Integer> middleNode(ListNode<Integer> head) {
+        ListNode<Integer> slow = head;
+        ListNode<Integer> fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
 }
