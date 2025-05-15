@@ -116,7 +116,7 @@ public class Solution {
         return dummy.next;
     }
 
-    ListNode<Integer> findFromEnd(ListNode<Integer> head, int k) {
+    public ListNode<Integer> findFromEnd(ListNode<Integer> head, int k) {
         ListNode<Integer> p1 = head;
         ListNode<Integer> p2 = head;
         int index = 0;
@@ -128,5 +128,13 @@ public class Solution {
             index++;
         }
         return p2;
+    }
+
+    public ListNode<Integer> removeNthFromEnd(ListNode<Integer> head, int n) {
+        ListNode<Integer> dummy = new ListNode<>(-1);
+        dummy.next = head;
+        ListNode<Integer> fromEnd = findFromEnd(head, n + 1);
+        fromEnd.next = fromEnd.next.next;
+        return dummy.next;
     }
 }

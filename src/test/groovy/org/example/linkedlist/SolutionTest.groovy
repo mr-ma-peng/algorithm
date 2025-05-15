@@ -367,4 +367,32 @@ class SolutionTest extends Specification {
             result.next.next.next.next.val == 6
             result.next.next.next.next.next == null
     }
+
+    def "test removeNthFromEnd removes middle node"() {
+        given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+
+        when: "Remove the 2nd node from end (value 4)"
+            ListNode<Integer> result = solution.removeNthFromEnd(head, 2)
+
+        then: "Result should be 1 -> 2 -> 3 -> 5 -> null"
+            result.val == 1
+            result.next.val == 2
+            result.next.next.val == 3
+            result.next.next.next.val == 5
+            result.next.next.next.next == null
+    }
+
+    def "test removeNthFromEnd removes last node"() {
+        given: "A linked list: 1 -> 2 -> 3 -> null"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+
+        when: "Remove the 1st node from end (last node 3)"
+            ListNode<Integer> result = solution.removeNthFromEnd(head, 1)
+
+        then: "Result should be 1 -> 2 -> null"
+            result.val == 1
+            result.next.val == 2
+            result.next.next == null
+    }
 }
