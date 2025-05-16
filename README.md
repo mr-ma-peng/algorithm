@@ -217,6 +217,14 @@ Algorithm Practice
    - 实现方式：
      - 使用快慢指针法，快指针每次走两步，慢指针每次走一步。
      - 当快指针到达末尾时，慢指针正好在中间位置。
+9. [hasCycle(ListNode<Integer> head)](src/main/java/org/example/linkedlist/Solution.java#L151)
+    - 功能：检测链表中是否存在环。
+    - 实现方式：
+        - 使用快慢指针法，快指针每次走两步，慢指针每次走一步。
+        - 如果存在环，快慢指针最终会相遇。
+    - 时间复杂度：O(n)，其中 n 是链表节点数。
+    - 空间复杂度：O(1)（仅使用常量级额外空间）。
+    - 应用场景：链表结构验证、防止无限循环处理。
 
 ## 📁 search 模块
 🔍 文件：Solution.java
