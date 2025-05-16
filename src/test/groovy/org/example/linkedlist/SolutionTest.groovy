@@ -486,4 +486,55 @@ class SolutionTest extends Specification {
         then: "Result should be null"
             result == null
     }
+
+    def "test getIntersectionNode finds intersection at middle node"() {
+        given: "Two linked lists intersecting at middle node"
+            IntListNode common = new IntListNode(8, new IntListNode(4, new IntListNode(5)))
+            IntListNode headA = new IntListNode(4, new IntListNode(1, common))
+            IntListNode headB = new IntListNode(5, new IntListNode(6, new IntListNode(1, common)))
+
+        when:
+            IntListNode result = solution.getIntersectionNode(headA, headB)
+
+        then:
+            result.val == 8
+            result.next.val == 4
+            result.next.next.val == 5
+    }
+
+    def "test getIntersectionNode returns null for no intersection"() {
+        given: "Two non-intersecting linked lists"
+            IntListNode headA = new IntListNode(1, new IntListNode(2))
+            IntListNode headB = new IntListNode(3, new IntListNode(4))
+
+        when:
+            IntListNode result = solution.getIntersectionNode(headA, headB)
+
+        then:
+            result == null
+    }
+
+    def "test getIntersectionNode with one empty list"() {
+        given: "One empty list and one non-empty list"
+            IntListNode headA = null
+            IntListNode headB = new IntListNode(1, new IntListNode(2))
+
+        when:
+            IntListNode result = solution.getIntersectionNode(headA, headB)
+
+        then:
+            result == null
+    }
+
+    def "test getIntersectionNode with both lists empty"() {
+        given: "Both lists are empty"
+            IntListNode headA = null
+            IntListNode headB = null
+
+        when:
+            IntListNode result = solution.getIntersectionNode(headA, headB)
+
+        then:
+            result == null
+    }
 }

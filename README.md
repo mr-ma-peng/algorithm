@@ -234,6 +234,13 @@ Algorithm Practice
     - 时间复杂度：O(n)，其中 n 是链表节点数。
     - 空间复杂度：O(1)（仅使用常量级额外空间）。
     - 应用场景：链表环结构分析、内存泄漏检测。
+11. [getIntersectionNode(IntListNode headA, IntListNode headB)](src/main/java/org/example/linkedlist/Solution.java#L185)
+   - 功能：查找两个链表的第一个交点。
+   - 实现方式：
+     - 使用双指针法，p1 和 p2 分别从 headA 和 headB 开始遍历。
+     - 当 p1 到达末尾时，指向 headB 继续遍历；p2 同理指向 headA。
+     - 如果存在交点，p1 和 p2 最终会相遇。
+     - 如果不存在交点，最终会同时到达 null。
 
 ## 📁 search 模块
 🔍 文件：Solution.java
