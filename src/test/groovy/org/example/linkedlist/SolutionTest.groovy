@@ -446,4 +446,44 @@ class SolutionTest extends Specification {
         then: "Result should be false"
             !result
     }
+
+    def "test detectCycle finds entry node of cycle"() {
+        given: "A linked list with a cycle"
+            ListNode<Integer> head = new ListNode<>(3)
+            ListNode<Integer> node2 = new ListNode<>(2)
+            ListNode<Integer> node0 = new ListNode<>(0)
+            ListNode<Integer> node4 = new ListNode<>(4)
+            head.next = node2
+            node2.next = node0
+            node0.next = node4
+            node4.next = node2  // Cycle: 2 -> 0 -> 4 -> 2
+
+        when: "Detect cycle"
+            ListNode<Integer> result = solution.detectCycle(head)
+
+        then: "Result should be the entry node of the cycle (node2)"
+            result.val == 2
+    }
+
+    def "test detectCycle returns null for non-cyclic list"() {
+        given: "A non-cyclic linked list"
+            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+
+        when: "Detect cycle"
+            ListNode<Integer> result = solution.detectCycle(head)
+
+        then: "Result should be null"
+            result == null
+    }
+
+    def "test detectCycle returns null for empty list"() {
+        given: "Null input"
+            ListNode<Integer> head = null
+
+        when: "Detect cycle"
+            ListNode<Integer> result = solution.detectCycle(head)
+
+        then: "Result should be null"
+            result == null
+    }
 }
