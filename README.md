@@ -242,6 +242,8 @@ Algorithm Practice
      - 如果存在交点，p1 和 p2 最终会相遇。
      - 如果不存在交点，最终会同时到达 null。
 
+## 📁 tree 模块
+
 ## 📁 search 模块
 🔍 文件：Solution.java
 1. [binarySearch(int[] nums, int target)](src/main/java/org/example/search/Solution.java#L6)
