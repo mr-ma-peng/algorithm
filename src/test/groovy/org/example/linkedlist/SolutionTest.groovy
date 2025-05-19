@@ -8,10 +8,10 @@ class SolutionTest extends Specification {
 
     def "test deleteDuplicates removes duplicates correctly"() {
         given: "A linked list with duplicates: 1 -> 1 -> 1 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(1, new ListNode<>(1)))
+            IntListNode head = new IntListNode(1, new IntListNode(1, new IntListNode(1)))
 
         when: "Remove duplicates"
-            ListNode<Integer> result = solution.deleteDuplicates(head)
+            IntListNode result = solution.deleteDuplicates(head)
 
         then: "Result should be 1 -> null"
             result.val == 1
@@ -20,10 +20,10 @@ class SolutionTest extends Specification {
 
     def "test deleteDuplicates with mixed duplicates"() {
         given: "A linked list: 1 -> 1 -> 2 -> 2 -> 3 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(1, new ListNode<>(2, new ListNode<>(2, new ListNode<>(3)))))
+            IntListNode head = new IntListNode(1, new IntListNode(1, new IntListNode(2, new IntListNode(2, new IntListNode(3)))))
 
         when: "Remove duplicates"
-            ListNode<Integer> result = solution.deleteDuplicates(head)
+            IntListNode result = solution.deleteDuplicates(head)
 
         then: "Result should be 1 -> 2 -> 3 -> null"
             result.val == 1
@@ -34,10 +34,10 @@ class SolutionTest extends Specification {
 
     def "test deleteDuplicates with no duplicates"() {
         given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3, new IntListNode(4, new IntListNode(5)))))
 
         when: "Remove duplicates"
-            ListNode<Integer> result = solution.deleteDuplicates(head)
+            IntListNode result = solution.deleteDuplicates(head)
 
         then: "Result should remain unchanged"
             result.val == 1
@@ -50,10 +50,10 @@ class SolutionTest extends Specification {
 
     def "test deleteDuplicates with empty list"() {
         given: "Null input"
-            ListNode<Integer> head = null
+            IntListNode head = null
 
         when: "Remove duplicates"
-            ListNode<Integer> result = solution.deleteDuplicates(head)
+            IntListNode result = solution.deleteDuplicates(head)
 
         then: "Result should be null"
             result == null
@@ -61,10 +61,10 @@ class SolutionTest extends Specification {
 
     def "test rotateRight rotates list correctly"() {
         given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3, new IntListNode(4, new IntListNode(5)))))
 
         when: "Rotate right by 2 positions"
-            ListNode<Integer> result = solution.rotateRight(head, 2)
+            IntListNode result = solution.rotateRight(head, 2)
 
         then: "Result should be 4 -> 5 -> 1 -> 2 -> 3 -> null"
             result.val == 4
@@ -77,10 +77,10 @@ class SolutionTest extends Specification {
 
     def "test rotateRight with k larger than length"() {
         given: "A linked list: 1 -> 2 -> 3 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3)))
 
         when: "Rotate right by 4 positions (length is 3)"
-            ListNode<Integer> result = solution.rotateRight(head, 4)
+            IntListNode result = solution.rotateRight(head, 4)
 
         then: "Result should be 3 -> 1 -> 2 -> null"
             result.val == 3
@@ -91,10 +91,10 @@ class SolutionTest extends Specification {
 
     def "test rotateRight with k equals to length"() {
         given: "A linked list: 1 -> 2 -> 3 -> 4 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4))))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3, new IntListNode(4))))
 
         when: "Rotate right by 4 positions (length is 4)"
-            ListNode<Integer> result = solution.rotateRight(head, 4)
+            IntListNode result = solution.rotateRight(head, 4)
 
         then: "Result should remain unchanged: 1 -> 2 -> 3 -> 4 -> null"
             result.val == 1
@@ -106,10 +106,10 @@ class SolutionTest extends Specification {
 
     def "test rotateRight with empty list"() {
         given: "Null input"
-            ListNode<Integer> head = null
+            IntListNode head = null
 
         when: "Rotate right by 2 positions"
-            ListNode<Integer> result = solution.rotateRight(head, 2)
+            IntListNode result = solution.rotateRight(head, 2)
 
         then: "Result should be null"
             result == null
@@ -117,10 +117,10 @@ class SolutionTest extends Specification {
 
     def "test rotateRight with single node"() {
         given: "A single-node linked list: 1 -> null"
-            ListNode<Integer> head = new ListNode<>(1)
+            IntListNode head = new IntListNode(1)
 
         when: "Rotate right by 5 positions"
-            ListNode<Integer> result = solution.rotateRight(head, 5)
+            IntListNode result = solution.rotateRight(head, 5)
 
         then: "Result should remain unchanged: 1 -> null"
             result.val == 1
@@ -129,11 +129,11 @@ class SolutionTest extends Specification {
 
     def "test mergeTwoLists merges two sorted lists correctly"() {
         given: "Two sorted linked lists"
-            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(2, new ListNode<>(4)))
-            ListNode<Integer> l2 = new ListNode<>(1, new ListNode<>(3, new ListNode<>(4)))
+            IntListNode l1 = new IntListNode(1, new IntListNode(2, new IntListNode(4)))
+            IntListNode l2 = new IntListNode(1, new IntListNode(3, new IntListNode(4)))
 
         when: "Merge the two lists"
-            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+            IntListNode result = solution.mergeTwoLists(l1, l2)
 
         then: "Result should be [1, 1, 2, 3, 4, 4]"
             result.val == 1
@@ -147,11 +147,11 @@ class SolutionTest extends Specification {
 
     def "test mergeTwoLists with both lists empty"() {
         given: "Both lists are empty"
-            ListNode<Integer> l1 = null
-            ListNode<Integer> l2 = null
+            IntListNode l1 = null
+            IntListNode l2 = null
 
         when: "Merge the two lists"
-            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+            IntListNode result = solution.mergeTwoLists(l1, l2)
 
         then: "Result should be null"
             result == null
@@ -159,11 +159,11 @@ class SolutionTest extends Specification {
 
     def "test mergeTwoLists with one list empty"() {
         given: "One list is empty"
-            ListNode<Integer> l1 = null
-            ListNode<Integer> l2 = new ListNode<>(0)
+            IntListNode l1 = null
+            IntListNode l2 = new IntListNode(0)
 
         when: "Merge the two lists"
-            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+            IntListNode result = solution.mergeTwoLists(l1, l2)
 
         then: "Result should be [0]"
             result.val == 0
@@ -172,11 +172,11 @@ class SolutionTest extends Specification {
 
     def "test mergeTwoLists with one element in each list"() {
         given: "Each list has one element"
-            ListNode<Integer> l1 = new ListNode<>(2)
-            ListNode<Integer> l2 = new ListNode<>(1)
+            IntListNode l1 = new IntListNode(2)
+            IntListNode l2 = new IntListNode(1)
 
         when: "Merge the two lists"
-            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+            IntListNode result = solution.mergeTwoLists(l1, l2)
 
         then: "Result should be [1, 2]"
             result.val == 1
@@ -186,11 +186,11 @@ class SolutionTest extends Specification {
 
     def "test mergeTwoLists with duplicate elements"() {
         given: "Each list contains duplicates"
-            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(1, new ListNode<>(1)))
-            ListNode<Integer> l2 = new ListNode<>(2, new ListNode<>(2))
+            IntListNode l1 = new IntListNode(1, new IntListNode(1, new IntListNode(1)))
+            IntListNode l2 = new IntListNode(2, new IntListNode(2))
 
         when: "Merge the two lists"
-            ListNode<Integer> result = solution.mergeTwoLists(l1, l2)
+            IntListNode result = solution.mergeTwoLists(l1, l2)
 
         then: "Result should be [1, 1, 1, 2, 2]"
             result.val == 1
@@ -203,10 +203,10 @@ class SolutionTest extends Specification {
 
     def "test findFromEnd finds correct node from end"() {
         given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3, new IntListNode(4, new IntListNode(5)))))
 
         when: "Find 2nd node from end"
-            ListNode<Integer> result = solution.findFromEnd(head, 2)
+            IntListNode result = solution.findFromEnd(head, 2)
 
         then: "Result should be node with value 4"
             result.val == 4
@@ -214,10 +214,10 @@ class SolutionTest extends Specification {
 
     def "test findFromEnd with k equals to list length"() {
         given: "A linked list: 1 -> 2 -> 3 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3)))
 
         when: "Find 3rd node from end (head)"
-            ListNode<Integer> result = solution.findFromEnd(head, 3)
+            IntListNode result = solution.findFromEnd(head, 3)
 
         then: "Result should be node with value 1"
             result.val == 1
@@ -225,10 +225,10 @@ class SolutionTest extends Specification {
 
     def "test findFromEnd with empty list"() {
         given: "Null input"
-            ListNode<Integer> head = null
+            IntListNode head = null
 
         when: "Find 2nd node from end"
-            ListNode<Integer> result = solution.findFromEnd(head, 2)
+            IntListNode result = solution.findFromEnd(head, 2)
 
         then: "Result should be null"
             result == null
@@ -236,10 +236,10 @@ class SolutionTest extends Specification {
 
     def "test middleNode finds the middle node correctly"() {
         given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3, new IntListNode(4, new IntListNode(5)))))
 
         when: "Find the middle node"
-            ListNode<Integer> result = solution.middleNode(head)
+            IntListNode result = solution.middleNode(head)
 
         then: "Result should be node with value 3"
             result.val == 3
@@ -247,10 +247,10 @@ class SolutionTest extends Specification {
 
     def "test partition with x"() {
         given: "A linked list: 1 -> 4 -> 3 -> 2 -> 5 -> 2 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(4, new ListNode<>(3, new ListNode<>(2, new ListNode<>(5, new ListNode<>(2))))))
+            IntListNode head = new IntListNode(1, new IntListNode(4, new IntListNode(3, new IntListNode(2, new IntListNode(5, new IntListNode(2))))))
 
         when: "Partition the list with x=3"
-            ListNode<Integer> result = solution.partition(head, 3)
+            IntListNode result = solution.partition(head, 3)
 
         then: "Result should be 1 -> 2 -> 2 -> 4 -> 3 -> 5 -> null"
             result.val == 1
@@ -264,10 +264,10 @@ class SolutionTest extends Specification {
 
     def "test partition with empty list"() {
         given: "Null input"
-            ListNode<Integer> head = null
+            IntListNode head = null
 
         when: "Partition the list with x=5"
-            ListNode<Integer> result = solution.partition(head, 5)
+            IntListNode result = solution.partition(head, 5)
 
         then: "Result should be null"
             result == null
@@ -275,10 +275,10 @@ class SolutionTest extends Specification {
 
     def "test partition with all elements greater than x"() {
         given: "A linked list: 4 -> 5 -> 6 -> null"
-            ListNode<Integer> head = new ListNode<>(4, new ListNode<>(5, new ListNode<>(6)))
+            IntListNode head = new IntListNode(4, new IntListNode(5, new IntListNode(6)))
 
         when: "Partition the list with x=3"
-            ListNode<Integer> result = solution.partition(head, 3)
+            IntListNode result = solution.partition(head, 3)
 
         then: "Result should be 4 -> 5 -> 6 -> null"
             result.val == 4
@@ -289,10 +289,10 @@ class SolutionTest extends Specification {
 
     def "test partition with all elements less than x"() {
         given: "A linked list: 1 -> 2 -> 3 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3)))
 
         when: "Partition the list with x=4"
-            ListNode<Integer> result = solution.partition(head, 4)
+            IntListNode result = solution.partition(head, 4)
 
         then: "Result should be 1 -> 2 -> 3 -> null"
             result.val == 1
@@ -303,13 +303,13 @@ class SolutionTest extends Specification {
 
     def "test mergeKLists with normal input"() {
         given: "Three sorted linked lists"
-            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(4, new ListNode<>(5)))
-            ListNode<Integer> l2 = new ListNode<>(1, new ListNode<>(3, new ListNode<>(4)))
-            ListNode<Integer> l3 = new ListNode<>(2, new ListNode<>(6))
-            ListNode<Integer>[] lists = [l1, l2, l3] as ListNode<Integer>[]
+            IntListNode l1 = new IntListNode(1, new IntListNode(4, new IntListNode(5)))
+            IntListNode l2 = new IntListNode(1, new IntListNode(3, new IntListNode(4)))
+            IntListNode l3 = new IntListNode(2, new IntListNode(6))
+            IntListNode[] lists = [l1, l2, l3] as IntListNode[]
 
         when: "Merge the lists"
-            ListNode<Integer> result = solution.mergeKLists(lists)
+            IntListNode result = solution.mergeKLists(lists)
 
         then: "Result should be [1, 1, 2, 3, 4, 4, 5, 6]"
             result.val == 1
@@ -325,10 +325,10 @@ class SolutionTest extends Specification {
 
     def "test mergeKLists with empty array"() {
         given: "An empty array of linked lists"
-            ListNode<Integer>[] lists = [] as ListNode<Integer>[]
+            IntListNode[] lists = [] as IntListNode[]
 
         when: "Merge the lists"
-            ListNode<Integer> result = solution.mergeKLists(lists)
+            IntListNode result = solution.mergeKLists(lists)
 
         then: "Result should be null"
             result == null
@@ -336,10 +336,10 @@ class SolutionTest extends Specification {
 
     def "test mergeKLists with all lists null"() {
         given: "An array of null linked lists"
-            ListNode<Integer>[] lists = [null, null, null] as ListNode<Integer>[]
+            IntListNode[] lists = [null, null, null] as IntListNode[]
 
         when: "Merge the lists"
-            ListNode<Integer> result = solution.mergeKLists(lists)
+            IntListNode result = solution.mergeKLists(lists)
 
         then: "Result should be null"
             result == null
@@ -347,11 +347,11 @@ class SolutionTest extends Specification {
 
     def "test mergeKLists with single list"() {
         given: "A single linked list"
-            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(4, new ListNode<>(5)))
-            ListNode<Integer>[] lists = [l1] as ListNode<Integer>[]
+            IntListNode l1 = new IntListNode(1, new IntListNode(4, new IntListNode(5)))
+            IntListNode[] lists = [l1] as IntListNode[]
 
         when: "Merge the lists"
-            ListNode<Integer> result = solution.mergeKLists(lists)
+            IntListNode result = solution.mergeKLists(lists)
 
         then: "Result should be the same as the input list"
             result.val == 1
@@ -362,13 +362,13 @@ class SolutionTest extends Specification {
 
     def "test mergeKLists with mixed null and non-null lists"() {
         given: "An array with some null and some non-null linked lists"
-            ListNode<Integer> l1 = new ListNode<>(1, new ListNode<>(4, new ListNode<>(5)))
-            ListNode<Integer> l2 = null
-            ListNode<Integer> l3 = new ListNode<>(2, new ListNode<>(6))
-            ListNode<Integer>[] lists = [l1, l2, l3] as ListNode<Integer>[]
+            IntListNode l1 = new IntListNode(1, new IntListNode(4, new IntListNode(5)))
+            IntListNode l2 = null
+            IntListNode l3 = new IntListNode(2, new IntListNode(6))
+            IntListNode[] lists = [l1, l2, l3] as IntListNode[]
 
         when: "Merge the lists"
-            ListNode<Integer> result = solution.mergeKLists(lists)
+            IntListNode result = solution.mergeKLists(lists)
 
         then: "Result should be [1, 2, 4, 5, 6]"
             result.val == 1
@@ -381,10 +381,10 @@ class SolutionTest extends Specification {
 
     def "test removeNthFromEnd removes middle node"() {
         given: "A linked list: 1 -> 2 -> 3 -> 4 -> 5 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3, new ListNode<>(4, new ListNode<>(5)))))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3, new IntListNode(4, new IntListNode(5)))))
 
         when: "Remove the 2nd node from end (value 4)"
-            ListNode<Integer> result = solution.removeNthFromEnd(head, 2)
+            IntListNode result = solution.removeNthFromEnd(head, 2)
 
         then: "Result should be 1 -> 2 -> 3 -> 5 -> null"
             result.val == 1
@@ -396,10 +396,10 @@ class SolutionTest extends Specification {
 
     def "test removeNthFromEnd removes last node"() {
         given: "A linked list: 1 -> 2 -> 3 -> null"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3)))
 
         when: "Remove the 1st node from end (last node 3)"
-            ListNode<Integer> result = solution.removeNthFromEnd(head, 1)
+            IntListNode result = solution.removeNthFromEnd(head, 1)
 
         then: "Result should be 1 -> 2 -> null"
             result.val == 1
@@ -409,10 +409,10 @@ class SolutionTest extends Specification {
 
     def "test hasCycle detects cycle in linked list"() {
         given: "A linked list with a cycle"
-            ListNode<Integer> head = new ListNode<>(3)
-            ListNode<Integer> node2 = new ListNode<>(2)
-            ListNode<Integer> node0 = new ListNode<>(0)
-            ListNode<Integer> node4 = new ListNode<>(4)
+            IntListNode head = new IntListNode(3)
+            IntListNode node2 = new IntListNode(2)
+            IntListNode node0 = new IntListNode(0)
+            IntListNode node4 = new IntListNode(4)
             head.next = node2
             node2.next = node0
             node0.next = node4
@@ -427,7 +427,7 @@ class SolutionTest extends Specification {
 
     def "test hasCycle returns false for null input"() {
         given: "Null input"
-            ListNode<Integer> head = null
+            IntListNode head = null
 
         when: "Check for cycle"
             boolean result = solution.hasCycle(head)
@@ -438,7 +438,7 @@ class SolutionTest extends Specification {
 
     def "test hasCycle returns false for non-cyclic list"() {
         given: "A non-cyclic linked list"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3)))
 
         when: "Check for cycle"
             boolean result = solution.hasCycle(head)
@@ -449,17 +449,17 @@ class SolutionTest extends Specification {
 
     def "test detectCycle finds entry node of cycle"() {
         given: "A linked list with a cycle"
-            ListNode<Integer> head = new ListNode<>(3)
-            ListNode<Integer> node2 = new ListNode<>(2)
-            ListNode<Integer> node0 = new ListNode<>(0)
-            ListNode<Integer> node4 = new ListNode<>(4)
+            IntListNode head = new IntListNode(3)
+            IntListNode node2 = new IntListNode(2)
+            IntListNode node0 = new IntListNode(0)
+            IntListNode node4 = new IntListNode(4)
             head.next = node2
             node2.next = node0
             node0.next = node4
             node4.next = node2  // Cycle: 2 -> 0 -> 4 -> 2
 
         when: "Detect cycle"
-            ListNode<Integer> result = solution.detectCycle(head)
+            IntListNode result = solution.detectCycle(head)
 
         then: "Result should be the entry node of the cycle (node2)"
             result.val == 2
@@ -467,10 +467,10 @@ class SolutionTest extends Specification {
 
     def "test detectCycle returns null for non-cyclic list"() {
         given: "A non-cyclic linked list"
-            ListNode<Integer> head = new ListNode<>(1, new ListNode<>(2, new ListNode<>(3)))
+            IntListNode head = new IntListNode(1, new IntListNode(2, new IntListNode(3)))
 
         when: "Detect cycle"
-            ListNode<Integer> result = solution.detectCycle(head)
+            IntListNode result = solution.detectCycle(head)
 
         then: "Result should be null"
             result == null
@@ -478,10 +478,10 @@ class SolutionTest extends Specification {
 
     def "test detectCycle returns null for empty list"() {
         given: "Null input"
-            ListNode<Integer> head = null
+            IntListNode head = null
 
         when: "Detect cycle"
-            ListNode<Integer> result = solution.detectCycle(head)
+            IntListNode result = solution.detectCycle(head)
 
         then: "Result should be null"
             result == null

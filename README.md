@@ -161,24 +161,24 @@ Algorithm Practice
 
 ## 📁 linkedlist 模块
 🔍 文件：Solution.java
-1. [reverse(ListNode head)](src/main/java/org/example/linkedlist/Solution.java#L10)
+1. [reverse(IntListNode head)](src/main/java/org/example/linkedlist/Solution.java#L10)
    - 功能：反转链表。
    - 实现方式：
      - 迭代法，维护前驱节点、当前节点、后继节点。
-2. [reverse(ListNode head, int m, int n)](src/main/java/org/example/linkedlist/Solution.java#L40)
+2. [reverse(IntListNode head, int m, int n)](src/main/java/org/example/linkedlist/Solution.java#L40)
    - 功能：反转链表中第 `m` 到 `n` 个节点。
    - 实现方式：
      - 找到第 `m` 个节点的前驱。
      - 反转 `m` 到 `n` 节点之间的部分。
      - 重新连接前后部分。
-3. [mergeTwoLists(ListNode<Integer> l1, ListNode<Integer> l2)](src/main/java/org/example/linkedlist/Solution.java#L51)
+3. [mergeTwoLists(IntListNode l1, IntListNode l2)](src/main/java/org/example/linkedlist/Solution.java#L51)
    - 功能：合并两个升序排列的链表为一个新的升序链表。
    - 实现方式：
      - 使用虚拟头节点 `dummy` 简化边界处理，通过双指针比较节点值大小依次拼接。
    - 时间复杂度：O(n + m)，其中 n 和 m 分别是链表 l1 和 l2 的长度。
    - 空间复杂度：O(1)（仅使用常量级额外空间）。
    - 应用场景：归并排序中的合并阶段、合并有序数据流。
-4. [partition(ListNode<Integer> head, int x)](src/main/java/org/example/linkedlist/Solution.java#L75)
+4. [partition(IntListNode head, int x)](src/main/java/org/example/linkedlist/Solution.java#L75)
    - 功能：对链表进行分区，将所有小于等于 x 的节点移到前面，大于 x 的节点留在后面。
    - 实现方式：
        - 使用两个虚拟头节点分别记录小于等于 x 和大于 x 的子链表。
@@ -187,7 +187,7 @@ Algorithm Practice
    - 时间复杂度：O(n)，其中 n 是链表长度。
    - 空间复杂度：O(1)（仅使用常量级额外空间）。
    - 应用场景：快速排序中的划分阶段、数据分组处理。
-5. [mergeKLists(ListNode<Integer>[] lists)](src/main/java/org/example/linkedlist/Solution.java#L98)
+5. [mergeKLists(IntListNode[] lists)](src/main/java/org/example/linkedlist/Solution.java#L98)
    - 功能：合并多个升序排列的链表为一个新的升序链表。
    - 实现方式：
      - 使用优先队列（PriorityQueue）维护当前各链表的头节点。
@@ -196,7 +196,7 @@ Algorithm Practice
    - 时间复杂度：O(N log k)，其中 N 是所有链表中的总节点数，k 是链表数量。
    - 空间复杂度：O(k)（优先队列中最多存储 k 个节点）。
    - 应用场景：合并多个有序数据流、多路归并排序等场景。
-6. [findFromEnd(ListNode<Integer> head, int k)](src/main/java/org/example/linkedlist/Solution.java#L119)
+6. [findFromEnd(IntListNode head, int k)](src/main/java/org/example/linkedlist/Solution.java#L119)
    - 功能：查找链表中倒数第 k 个节点。
    - 实现方式：
      - 使用双指针法，p1 先走 k 步，然后 p1 和 p2 同时前进直到 p1 到达末尾。
@@ -204,7 +204,7 @@ Algorithm Practice
    - 边界情况处理：
      - 当 k 大于链表长度时返回 null
      - 当链表为空时返回 null
-7. [removeNthFromEnd(ListNode<Integer> head, int n)](src/main/java/org/example/linkedlist/Solution.java#L133)
+7. [removeNthFromEnd(IntListNode head, int n)](src/main/java/org/example/linkedlist/Solution.java#L133)
    - 功能：删除链表中倒数第 n 个节点。
    - 实现方式：
      - 创建虚拟头节点简化边界处理。
@@ -212,12 +212,12 @@ Algorithm Practice
      - 修改该节点的 next 指针完成删除。
    - 时间复杂度：O(n)，需要遍历链表两次（一次确定长度，一次删除节点）。
    - 空间复杂度：O(1)。
-8. [middleNode(ListNode<Integer> head)](src/main/java/org/example/linkedlist/Solution.java#L141)
+8. [middleNode(IntListNode head)](src/main/java/org/example/linkedlist/Solution.java#L141)
    - 功能：查找链表的中间节点。
    - 实现方式：
      - 使用快慢指针法，快指针每次走两步，慢指针每次走一步。
      - 当快指针到达末尾时，慢指针正好在中间位置。
-9. [hasCycle(ListNode<Integer> head)](src/main/java/org/example/linkedlist/Solution.java#L151)
+9. [hasCycle(IntListNode head)](src/main/java/org/example/linkedlist/Solution.java#L151)
     - 功能：检测链表中是否存在环。
     - 实现方式：
         - 使用快慢指针法，快指针每次走两步，慢指针每次走一步。
@@ -225,7 +225,7 @@ Algorithm Practice
     - 时间复杂度：O(n)，其中 n 是链表节点数。
     - 空间复杂度：O(1)（仅使用常量级额外空间）。
     - 应用场景：链表结构验证、防止无限循环处理。
-10. [detectCycle(ListNode<Integer> head)](src/main/java/org/example/linkedlist/Solution.java#L164)
+10. [detectCycle(IntListNode head)](src/main/java/org/example/linkedlist/Solution.java#L164)
     - 功能：检测链表中是否存在环，并返回环的入口节点。
     - 实现方式：
         - 使用快慢指针法找到相遇点。

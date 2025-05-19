@@ -4,12 +4,12 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Solution {
-    public ListNode<Integer> deleteDuplicates(ListNode<Integer> head) {
+    public IntListNode deleteDuplicates(IntListNode head) {
         if (head == null) return null;
-        ListNode<Integer> slow = head;
-        ListNode<Integer> fast = head;
+        IntListNode slow = head;
+        IntListNode fast = head;
         while (fast != null) {
-            if (!fast.val.equals(slow.val)) {
+            if (fast.val != slow.val) {
                 slow.next = fast;
                 slow = slow.next;
             }
@@ -19,13 +19,13 @@ public class Solution {
         return head;
     }
 
-    public ListNode<Integer> rotateRight(ListNode<Integer> head, int k) {
+    public IntListNode rotateRight(IntListNode head, int k) {
         if (head == null || head.next == null || k <= 0) {
             return head;
         }
 
         int length = 1;
-        ListNode<Integer> tail = head;
+        IntListNode tail = head;
         while (tail.next != null) {
             tail = tail.next;
             length++;
@@ -37,8 +37,8 @@ public class Solution {
         }
         tail.next = head;
 
-        ListNode<Integer> newTail = head;
-        ListNode<Integer> newHead;
+        IntListNode newTail = head;
+        IntListNode newHead;
 
         for (int i = 0; i < length - k - 1; i++) {
             newTail = newTail.next;
@@ -48,11 +48,11 @@ public class Solution {
         return newHead;
     }
 
-    public ListNode<Integer> mergeTwoLists(ListNode<Integer> l1, ListNode<Integer> l2) {
-        ListNode<Integer> dummy = new ListNode<>(-1);
-        ListNode<Integer> p = dummy;
-        ListNode<Integer> p1 = l1;
-        ListNode<Integer> p2 = l2;
+    public IntListNode mergeTwoLists(IntListNode l1, IntListNode l2) {
+        IntListNode dummy = new IntListNode(-1);
+        IntListNode p = dummy;
+        IntListNode p1 = l1;
+        IntListNode p2 = l2;
         while (p1 != null && p2 != null) {
             if (p1.val >= p2.val) {
                 p.next = p2;
@@ -72,12 +72,12 @@ public class Solution {
         return dummy.next;
     }
 
-    public ListNode<Integer> partition(ListNode<Integer> head, int x) {
-        ListNode<Integer> dummy1 = new ListNode<>(-1);
-        ListNode<Integer> dummy2 = new ListNode<>(-1);
-        ListNode<Integer> p1 = dummy1;
-        ListNode<Integer> p2 = dummy2;
-        ListNode<Integer> p = head;
+    public IntListNode partition(IntListNode head, int x) {
+        IntListNode dummy1 = new IntListNode(-1);
+        IntListNode dummy2 = new IntListNode(-1);
+        IntListNode p1 = dummy1;
+        IntListNode p2 = dummy2;
+        IntListNode p = head;
         while (p != null) {
             if (p.val < x) {
                 p1.next = p;
@@ -86,7 +86,7 @@ public class Solution {
                 p2.next = p;
                 p2 = p2.next;
             }
-            ListNode<Integer> temp = p.next;
+            IntListNode temp = p.next;
             p.next = null;
             p = temp;
         }
@@ -95,18 +95,18 @@ public class Solution {
         return dummy1.next;
     }
 
-    public ListNode<Integer> mergeKLists(ListNode<Integer>[] lists) {
+    public IntListNode mergeKLists(IntListNode[] lists) {
         if (lists.length == 0) return null;
-        ListNode<Integer> dummy = new ListNode<>(-1);
-        ListNode<Integer> p = dummy;
-        PriorityQueue<ListNode<Integer>> pq = new PriorityQueue<>(lists.length, Comparator.comparingInt(a -> a.val));
-        for (ListNode<Integer> item : lists) {
+        IntListNode dummy = new IntListNode(-1);
+        IntListNode p = dummy;
+        PriorityQueue<IntListNode> pq = new PriorityQueue<>(lists.length, Comparator.comparingInt(a -> a.val));
+        for (IntListNode item : lists) {
             if (item != null) {
                 pq.add(item);
             }
         }
         while (!pq.isEmpty()) {
-            ListNode<Integer> node = pq.poll();
+            IntListNode node = pq.poll();
             p.next = node;
             p = p.next;
             if (node.next != null) {
@@ -116,9 +116,9 @@ public class Solution {
         return dummy.next;
     }
 
-    public ListNode<Integer> findFromEnd(ListNode<Integer> head, int k) {
-        ListNode<Integer> p1 = head;
-        ListNode<Integer> p2 = head;
+    public IntListNode findFromEnd(IntListNode head, int k) {
+        IntListNode p1 = head;
+        IntListNode p2 = head;
         int index = 0;
         while (p1 != null) {
             if (index >= k) {
@@ -130,17 +130,17 @@ public class Solution {
         return p2;
     }
 
-    public ListNode<Integer> removeNthFromEnd(ListNode<Integer> head, int n) {
-        ListNode<Integer> dummy = new ListNode<>(-1);
+    public IntListNode removeNthFromEnd(IntListNode head, int n) {
+        IntListNode dummy = new IntListNode(-1);
         dummy.next = head;
-        ListNode<Integer> fromEnd = findFromEnd(head, n + 1);
+        IntListNode fromEnd = findFromEnd(head, n + 1);
         fromEnd.next = fromEnd.next.next;
         return dummy.next;
     }
 
-    public ListNode<Integer> middleNode(ListNode<Integer> head) {
-        ListNode<Integer> slow = head;
-        ListNode<Integer> fast = head;
+    public IntListNode middleNode(IntListNode head) {
+        IntListNode slow = head;
+        IntListNode fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -148,9 +148,9 @@ public class Solution {
         return slow;
     }
 
-    public boolean hasCycle(ListNode<Integer> head) {
-        ListNode<Integer> slow = head;
-        ListNode<Integer> fast = head;
+    public boolean hasCycle(IntListNode head) {
+        IntListNode slow = head;
+        IntListNode fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
@@ -161,9 +161,9 @@ public class Solution {
         return false;
     }
 
-    public ListNode<Integer> detectCycle(ListNode<Integer> head) {
-        ListNode<Integer> slow = head;
-        ListNode<Integer> fast = head;
+    public IntListNode detectCycle(IntListNode head) {
+        IntListNode slow = head;
+        IntListNode fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
