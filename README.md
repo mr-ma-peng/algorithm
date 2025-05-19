@@ -244,7 +244,7 @@ Algorithm Practice
 
 ## 📁 tree 模块
 🔍 文件：Solution.java
-1. [maxDepth(TreeNode root)](src/main/java/org/example/tree/Solution.java#L4)
+1. [maxDepth(TreeNode root)](src/main/java/org/example/tree/Solution.java#L7)
    - 功能：计算二叉树的最大深度。
    - 实现方式：
      - 使用递归方法，分别计算左右子树的最大深度。
@@ -254,6 +254,17 @@ Algorithm Practice
      - 二叉树结构分析
      - 计算树形结构的层级
      - 平衡树判断的基础方法
+2. [preorderTraversal(TreeNode root)](src/main/java/org/example/tree/Solution.java#L16)
+   - 功能：对二叉树进行前序遍历。
+   - 实现方式：
+     - 使用递归方法，首先访问当前节点，然后递归遍历左子树和右子树。
+     - 将遍历结果存储在列表中返回。
+     - 时间复杂度为 O(n)，其中 n 是节点数。
+   - 应用场景：
+     - 二叉树结构分析
+     - 树形结构序列化
+     - 构建表达式树
+     - 创建树的副本
 
 ## 📁 search 模块
 🔍 文件：Solution.java
