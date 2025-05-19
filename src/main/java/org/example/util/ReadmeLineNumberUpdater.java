@@ -85,7 +85,7 @@ public class ReadmeLineNumberUpdater {
     public static void main(String[] args) {
         try {
             String currentDir = System.getProperty("user.dir");
-            String[] modules = {"array", "string", "linkedlist", "search"};
+            String[] modules = {"array", "string", "linkedlist", "search", "tree"};
             String readmePath = Paths.get(currentDir, "README.md").toString();
 
             for (String module : modules) {
