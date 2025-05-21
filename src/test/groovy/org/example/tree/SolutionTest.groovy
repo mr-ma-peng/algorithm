@@ -88,4 +88,18 @@ class SolutionTest extends Specification {
         then:
         solution.preorderTraversal(null).isEmpty()
     }
+    
+    def "test diameter of binary tree"() {
+        when:
+        def root = new TreeNode(1)
+        root.left = new TreeNode(2)
+        root.right = new TreeNode(3)
+        root.left.left = new TreeNode(4)
+        root.left.right = new TreeNode(5)
+        
+        def solution = new Solution()
+        
+        then:
+        solution.diameterOfBinaryTree(root) == 3
+    }
 }
